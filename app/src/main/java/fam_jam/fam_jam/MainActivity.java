@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new FamilyFragment();
                 break;
             case R.id.navigation_profile:
-                fragment = new ProfileFragment();
+                LoginActivity.signOut(this);
                 break;
         }
         return loadFragment(fragment);
