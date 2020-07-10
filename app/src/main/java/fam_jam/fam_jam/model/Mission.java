@@ -6,16 +6,9 @@ import java.util.Date;
 
 public class Mission implements Comparable<Mission>{
 
-    private String id, tId, dId, message, code;
-    private int product, status;
+    private String id, tId;
+    private int status;
     private Object timeCreated;
-    private Object meetTime;
-    private double lat, lng;
-    private boolean anon;
-
-    // arrays to translate saved index into a string
-    public static String[] states = {"Pending", "Answered", "Cancelled"};
-
     public Mission(){}
 
     public Mission(String missionId, String templateId){

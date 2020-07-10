@@ -2,14 +2,15 @@ package fam_jam.fam_jam.model;
 
 public class Member {
 
-    private String uId, name, email;
+    private String uId, name, email, famId;
+    private String[] members;
 
     public Member(){}
 
-    public Member(String userId, String userName, String userEmail){
+    public Member(String userId, String userName, String fId){
         this.uId = userId;
         this.name = userName;
-        this.email = userEmail;
+        this.famId = fId;
     }
 
     public String getuId() {
@@ -34,5 +35,21 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String[] getMembers() {
+        return members;
+    }
+
+    public void setMembers(String[] members) {
+        this.members = members;
+    }
+
+    public String getFamId() {
+        return famId;
+    }
+
+    public void setFamId(String famId) {
+        this.famId = famId;
     }
 }

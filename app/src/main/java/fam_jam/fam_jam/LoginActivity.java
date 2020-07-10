@@ -85,22 +85,6 @@ public class LoginActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
-            Member u = new Member(user.getUid(), user.getDisplayName(), user.getEmail());
-            // adds to firebase
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
-            userRef.child(user.getUid()).setValue(u)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            // successfully saved
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // failed to save
-                        }
-                    });
         } else {
             // Existing user
             Intent i = new Intent(this, MainActivity.class);
