@@ -1,5 +1,6 @@
 package fam_jam.fam_jam;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,11 @@ public class OnboardingActivity extends AppCompatActivity {
                 String nickname = nicknameET.getText().toString();
                 String family = familyET.getText().toString();
                 String password = passwordET.getText().toString();
+
+                Intent i = new Intent(OnboardingActivity.this, MainActivity.class);
+                OnboardingActivity.this.startActivity(i);
+                OnboardingActivity.this.finish();
+                finish();
             }
         });
     }
