@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent i = new Intent(this, OnboardingActivity.class);
             this.startActivity(i);
             this.finish();
+
             Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
             Member u = new Member(user.getUid(), user.getDisplayName(), user.getEmail());
@@ -102,11 +103,11 @@ public class LoginActivity extends AppCompatActivity {
                     });
         } else {
             // Existing user
+            Intent i = new Intent(this, MainActivity.class);
+            this.startActivity(i);
+            this.finish();
+            Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
         }
-        Intent i = new Intent(this, MainActivity.class);
-        this.startActivity(i);
-        this.finish();
-        Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
     }
 
     public static void signOut(final Activity c){
