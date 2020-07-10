@@ -79,9 +79,14 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUserMetadata metadata = user.getMetadata();
         if (Math.abs(metadata.getCreationTimestamp() - metadata.getLastSignInTimestamp()) < 100) {
             // creates new user
+            Intent i = new Intent(this, OnboardingActivity.class);
+            this.startActivity(i);
+            this.finish();
+            Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+
             Member u = new Member(user.getUid(), user.getDisplayName(), user.getEmail());
             // adds to firebase
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users");
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
             userRef.child(user.getUid()).setValue(u)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
