@@ -74,4 +74,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return loadFragment(fragment);
     }
+
+    private void generateMission(){
+
+    }
 }
