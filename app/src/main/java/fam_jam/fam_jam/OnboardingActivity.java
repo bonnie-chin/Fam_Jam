@@ -15,7 +15,7 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding);
+        setContentView(R.layout.create_family);
 
         nicknameET = findViewById(R.id.et_nickname);
         familyET = findViewById(R.id.et_family);
