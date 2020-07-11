@@ -1,5 +1,6 @@
 package fam_jam.fam_jam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +27,8 @@ import static fam_jam.fam_jam.MainActivity.fireRef;
 public class FamilyFragment extends Fragment {
 
     private TextView famNameTv, passcodeTv;
+    LayoutInflater layoutInflater;
+    LinearLayout fam_members;
 
     @Nullable
     @Override
@@ -49,5 +53,16 @@ public class FamilyFragment extends Fragment {
         });
 
         return v;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        fam_members = getView().findViewById(R.id.fam_members);
+        layoutInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        for (int i = 0; i < 5; i++) {
+            View myview = layoutInflater.inflate(R.layout.familymembercard, null, false);
+            fam_members.addView(myview);
+        }
     }
 }
