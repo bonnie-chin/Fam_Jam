@@ -87,7 +87,7 @@
                     </LinearLayout>
                     <TextView
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginRight="20dp"
                         android:fontFamily="@font/roboto_bold"
                         android:layout_width="wrap_content"
@@ -96,18 +96,21 @@
 
                         android:text="Have a discussion on things you want to improve in the family."/>
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="165dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="10dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:background="@drawable/missionaccomplishedblue"
                         android:text="MISSION ACCOMPLISHED"
                         android:textColor="#FEFEFE"
+                        android:drawableRight="@drawable/mabutton"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textSize="24px" />
+                        android:textSize="24px">
+
+                    </Button>
                 </LinearLayout>
 
 
