@@ -142,7 +142,6 @@
             <!-- Button to accept -->
 
 
-        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
