@@ -133,7 +133,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                         .setMessage("Did you complete the mission?")
                         .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                fireRef.child(famId).child("missions").child(m.getId()).child("status").setValue(1);
+                                fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
                             }
                         })
                         .setNegativeButton("Cancel", null)

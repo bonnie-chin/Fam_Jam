@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Member m = dataSnapshot.getValue(Member.class);
                 LoginActivity.famId = m.getFamId();
                 mission.getMissions();
-                AlarmReceiver.endWeek();
-
+//                AlarmReceiver.endWeek();
             }
 
             @Override

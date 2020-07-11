@@ -70,14 +70,11 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
         mAdapter = new ItemAdapter(missions, main);
         recyclerView.setAdapter(mAdapter);
 
-        // shows message if there are no new requests
-        if (missions.isEmpty()){
-            Toast.makeText(main, "No new missions!", Toast.LENGTH_SHORT).show();
-//            msgView.setVisibility(View.GONE);
-        }
-
         main.setUpNotifs();
 
+        if (famId!=null){
+            getMissions();
+        }
 
         return view;
     }
