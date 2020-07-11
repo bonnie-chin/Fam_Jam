@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
-            android:src="@drawable/fam_background" />
+            android:src="@drawable/family_background" />
 
         <LinearLayout
             android:layout_width="wrap_content"
