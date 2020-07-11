@@ -114,7 +114,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 header = "DAY | ";
                 break;
             case 2:
-                header = "RIGHT NOW | ";
+                header = "NOW | ";
                 break;
         }
         switch (m.getStatus()){
