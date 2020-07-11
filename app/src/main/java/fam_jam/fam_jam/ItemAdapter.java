@@ -111,13 +111,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         String header = "";
         switch (m.getType()){
             case 3:
-                header = "WEEK | ";
+                header = "WEEK  |  ";
                 break;
             case 1:
-                header = "DAY | ";
+                header = "DAY  |  ";
                 break;
             case 2:
-                header = "NOW | ";
+                header = "NOW  |  ";
                 break;
         }
         switch (m.getStatus()){

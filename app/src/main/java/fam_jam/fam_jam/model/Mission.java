@@ -10,17 +10,21 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
+import fam_jam.fam_jam.MainActivity;
+
 import static fam_jam.fam_jam.MainActivity.fireRef;
 
 public class Mission implements Comparable<Mission>{
 
-    private String id;
+    private String id, member;
     private int status, type, tId;
     private long timeCreated, startTime, endTime;
+
     public Mission(){}
 
-    public Mission(String missionId, int templateId, int missionType, long start, long end){
+    public Mission(String missionId, String memberId, int templateId, int missionType, long start, long end){
         this.id = missionId;
+        this.member = memberId;
         this.type = missionType;
         this.tId = templateId;
         // sets status to pending when created
@@ -81,8 +85,17 @@ public class Mission implements Comparable<Mission>{
     @Override
     public int compareTo(Mission o) {
         // returns 0 (same), 1 (puts o higher), -1 (puts this higher)
-        // TODO - compare based on time, type, status
-        return 0;
+        if (status == 1 && o.status!=1){
+            return 1;
+        } else if (status!=1 && o.status==1) {
+            return -1;
+        } else {
+            if (getTimeLeft() > o.getTimeLeft()){
+                return 1;
+            } else {
+                return -1;
+            }
+        }
     }
 
     public int getType() {
@@ -115,5 +128,13 @@ public class Mission implements Comparable<Mission>{
 
     public void setEndTime(long endTime) {
         this.endTime = endTime;
+    }
+
+    public String getMember() {
+        return member;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
     }
 }

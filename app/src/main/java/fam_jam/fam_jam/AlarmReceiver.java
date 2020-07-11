@@ -29,6 +29,7 @@ import static android.content.Context.ALARM_SERVICE;
 import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.LoginActivity.user;
 import static fam_jam.fam_jam.MainActivity.fireRef;
+import static fam_jam.fam_jam.MainActivity.member;
 
 // Custom class to schedule a water reset at midnight
 public class AlarmReceiver extends BroadcastReceiver {
@@ -124,7 +125,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     long end = duration + start;
 
                     String d = famRef.child("missions").push().getKey();
-                    Mission m = new Mission(d, rand, type, start, end);
+                    Mission m = new Mission(d, member.getuId(), rand, type, start, end);
                     // adds mission
                     famRef.child("missions").child(d).setValue(m);
                 }

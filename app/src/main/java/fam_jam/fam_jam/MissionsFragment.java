@@ -28,6 +28,7 @@ import java.util.List;
 import fam_jam.fam_jam.model.Mission;
 
 import static fam_jam.fam_jam.LoginActivity.famId;
+import static fam_jam.fam_jam.MainActivity.member;
 
 public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -91,10 +92,9 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Mission m = itemSnapshot.getValue(Mission.class);
                     // only displays if the mission is yours
-//                    if () {
-                        // TODO - check who it's assigned to
+                   if (m.getMember().equals(member.getuId())) {
                         MissionsFragment.this.missions.add(m);
-                    // }
+                    }
                 }
 
                 // sorts data
