@@ -69,7 +69,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     }
 
     // create new views (invoked by the layout manager)
-    @Override   
+    @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new card view
@@ -91,7 +91,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MissionTemplate t = dataSnapshot.getValue(MissionTemplate.class);
                 holder.titleTv.setText(t.getTitle());
-                String points = "+ " + t.getPoints() + " pts";
+                String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
                 // TODO - fix this later
 //                holder.iconImg.setImageResource(t.getImgUrl());
