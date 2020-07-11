@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import fam_jam.fam_jam.model.Family;
@@ -30,6 +31,7 @@ public class JoinFamilyActivity extends AppCompatActivity {
 
     // firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+    static DatabaseReference famRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +59,43 @@ public class JoinFamilyActivity extends AppCompatActivity {
                 final String password = passwordET.getText().toString();
 
                 // gets the generated id from firebase
-                DatabaseReference famRef = fireRef.child("families").child(family);
-                // TODO - oop fix this
 
-                famRef.addValueEventListener(new ValueEventListener() {
+                Query q = fireRef.child("families").orderByChild("code").equalTo(family);
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Family f = dataSnapshot.getValue(Family.class);
-                        if (password == f.getPassword()){
+                        DataSnapshot child = dataSnapshot.getChildren().iterator().next();
+                        Family f = child.getValue(Family.class);
+                        famRef = fireRef.child("families").child(f.getfId());
+
+                        if (password.equals(f.getPassword())){
                             Member u = new Member(user.getUid(), finalNickname, f.getfId());
                             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
                             userRef.child(user.getUid()).setValue(u)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            // successfully saved
+
+                                            // adds member to family
+                                            famRef.child("members").push().setValue(user.getUid())
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // successfully saved
+                                                            Intent i = new Intent(JoinFamilyActivity.this, MainActivity.class);
+                                                            JoinFamilyActivity.this.startActivity(i);
+                                                            JoinFamilyActivity.this.finish();
+                                                            Toast.makeText(getApplicationContext(),"Welcome to the family",Toast.LENGTH_SHORT).show();
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // failed to save
+                                                            Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -80,41 +104,54 @@ public class JoinFamilyActivity extends AppCompatActivity {
                                             // failed to save
                                         }
                                     });
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Incorrect password, please try again!", Toast.LENGTH_LONG).show();
+                    } else {
+                            // if passwords don't match
+                            Toast.makeText(JoinFamilyActivity.this, "Incorrect password, please try again!", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(getApplicationContext(), "Uh-oh, we couldn't find your family! Please check it is spelled correctly and try again.", Toast.LENGTH_LONG).show();
+
                     }
                 });
+                // TODO - oop fix this
 
-                // adds member to family
-                famRef.child("members").push().setValue(user.getUid())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                // successfully saved
-                                Toast.makeText(getApplicationContext(),"Welcome to the family",Toast.LENGTH_SHORT).show();
-                                finish();
 
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // failed to save
-                                Toast.makeText(getApplicationContext(),"Uh-oh! something went wrong, please try again.",Toast.LENGTH_SHORT).show();
-                            }
-                        });
 
-                Intent i = new Intent(JoinFamilyActivity.this, MainActivity.class);
-                JoinFamilyActivity.this.startActivity(i);
-                JoinFamilyActivity.this.finish();
-                finish();
-            }
+//                famRef.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        Family f = dataSnapshot.getValue(Family.class);
+//                        if (password == f.getPassword()){
+//                            Member u = new Member(user.getUid(), finalNickname, f.getfId());
+//                            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
+//                            userRef.child(user.getUid()).setValue(u)
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                        @Override
+//                                        public void onSuccess(Void aVoid) {
+//                                            // successfully saved
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//                                            // failed to save
+//                                        }
+//                                    });
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Incorrect password, please try again!", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                        Toast.makeText(getApplicationContext(), "Uh-oh, we couldn't find your family! Please check it is spelled correctly and try again.", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+
+
+
+            } // end onclick
         });
     }
 

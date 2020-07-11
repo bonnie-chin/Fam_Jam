@@ -72,7 +72,7 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         // shows message if there are no new requests
         if (missions.isEmpty()){
-            msgView.setVisibility(View.GONE);
+//            msgView.setVisibility(View.GONE);
         }
 
         main.setUpNotifs();
