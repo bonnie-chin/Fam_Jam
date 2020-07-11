@@ -13,6 +13,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 
@@ -27,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     public String mUsername;
     private static int RC_SIGN_IN = 1;
     private static String ANONYMOUS = null;
+
+    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +79,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Signs in the user
-    private void onSignedInInitialize(FirebaseUser user){
+    private void onSignedInInitialize(final FirebaseUser user){
+
         FirebaseUserMetadata metadata = user.getMetadata();
         if (Math.abs(metadata.getCreationTimestamp() - metadata.getLastSignInTimestamp()) < 100) {
             // creates new user
@@ -88,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             this.finish();
             Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public static void signOut(final Activity c){
