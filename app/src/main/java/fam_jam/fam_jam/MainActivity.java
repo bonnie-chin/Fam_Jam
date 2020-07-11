@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 Member m = dataSnapshot.getValue(Member.class);
                 LoginActivity.famId = m.getFamId();
                 ((MissionsFragment) mission).getMissions();
+                AlarmReceiver.endWeek();
 
             }
 
@@ -63,10 +64,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             }
 
-
         });
 
-
+        // Schedules a reset every week at midnight using AlarmReceiver class method
+        AlarmReceiver.setReset(this);
     }
 
     private boolean loadFragment(Fragment fragment) {

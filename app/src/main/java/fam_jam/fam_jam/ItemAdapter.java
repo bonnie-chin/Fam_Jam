@@ -24,6 +24,8 @@ import fam_jam.fam_jam.model.Mission;
 import fam_jam.fam_jam.model.MissionTemplate;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+import static fam_jam.fam_jam.JoinFamilyActivity.famRef;
+import static fam_jam.fam_jam.LoginActivity.famId;
 
 // Generates the cards based on data from the Firebase (any requests within the last 30 minutes)
 
@@ -76,7 +78,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         final Mission m = missionList.get(position);
 
         // mission template
-        fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(m.gettId()).addListenerForSingleValueEvent(new ValueEventListener() {
+        fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(String.valueOf(m.gettId())).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MissionTemplate t = dataSnapshot.getValue(MissionTemplate.class);
@@ -109,6 +111,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         switch (m.getStatus()){
             case 0:
                 header += m.getStringTimeLeft((long)m.getTimeCreated());
+                // changes look based on active status and type
+                // TODO - change colors here
+                // holder.timeTopTv.setTextColor();
                 break;
             case 1:
                 header += "COMPLETED";
@@ -128,13 +133,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                         .setMessage("Did you complete the mission?")
                         .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // TODO - change status here
+                                fireRef.child(famId).child("missions").child(m.getId()).child("status").setValue(1);
                             }
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
             }
         });
+
+
+
     }
 
 
