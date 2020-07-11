@@ -150,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/poppins_semibold"
-                    android:background="@drawable/doneCardBtn"
+                    android:background="@drawable/completemission"
                     android:textColor="#FEF5EF"
                     android:textSize="30px"
                     android:gravity="bottom|center"
