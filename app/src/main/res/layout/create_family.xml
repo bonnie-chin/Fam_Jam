@@ -99,14 +99,18 @@ password with can join!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="40dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="top"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@layout/edittext_border"
+            android:fontFamily="@font/roboto_light_italic"
+            android:hint="Chipers123"
+            android:inputType="textPassword"
             android:lines="2"
             android:maxLength="150"
-            android:textSize="48px"
-            android:layout_marginTop="20dp"
-            android:background="@layout/edittext_border" />/>
+            android:textSize="48px"  />
 
         <Button
             android:id="@+id/button_done"
