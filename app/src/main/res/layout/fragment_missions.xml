@@ -122,7 +122,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="120dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="50dp"
                 android:src="@drawable/family1">
 
