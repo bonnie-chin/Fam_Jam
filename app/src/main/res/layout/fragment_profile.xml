@@ -70,10 +70,10 @@
     <ImageView
         android:layout_width="60dp"
         android:layout_height="88dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="147dp"
-        android:layout_marginEnd="155dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="495dp"
         android:src="@drawable/bluerectangle" />
 
     <ImageView
