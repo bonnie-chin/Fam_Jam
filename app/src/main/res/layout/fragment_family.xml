@@ -63,7 +63,7 @@
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="15dp"
-                                android:src="@drawable/ic_baseline_people_alt_24" />
+                                android:src="@drawable/ic_baseline_people_alt_24_dark" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -152,8 +152,8 @@
         </LinearLayout>
     </RelativeLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -193,6 +193,24 @@
             android:text="Family Members"
             android:textColor="#384862"
             android:textSize="72px"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_marginLeft="30dp"
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadingEdge="horizontal"
+                android:fadingEdgeLength="50dp"
+                android:fillViewport="false"
+                android:requiresFadingEdge="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </LinearLayout>
