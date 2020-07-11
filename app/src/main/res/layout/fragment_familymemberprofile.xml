@@ -37,7 +37,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginLeft="40dp">
                     <TextView
                         android:layout_width="wrap_content"
@@ -66,10 +66,10 @@
                 <Spinner
                     android:id="@+id/products_spinner"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:entries="@array/level_array"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:background="@drawable/level_spinner"
