@@ -69,12 +69,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     }
 
     // create new views (invoked by the layout manager)
-    @Override
+    @Override   
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         // create a new card view
         View card = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mission_card_now, parent, false);
+                .inflate(R.layout.mission_card_day, parent, false);
         MyViewHolder vh = new MyViewHolder(card);
         return vh;
     }
