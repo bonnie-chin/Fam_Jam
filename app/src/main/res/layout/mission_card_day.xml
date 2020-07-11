@@ -74,7 +74,7 @@
                         android:layout_width="150px"
                         android:layout_height="62px"
                         android:layout_marginTop = "20dp"
-                        android:layout_marginLeft="-100dp"
+                        android:layout_marginLeft="-50dp"
                         app:cardBackgroundColor="#FAC16B"
                         app:cardCornerRadius="5dp">
 
