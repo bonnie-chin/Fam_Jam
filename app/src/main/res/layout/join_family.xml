@@ -7,115 +7,124 @@
     tools:context=".CreateFamilyActivity"
     android:background="@drawable/background">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="276dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="140dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="First, join your family!"
-            android:textColor="#3F3D56"
-            android:textSize="72px"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="got a nickname?"
-            android:textColor="#3F3D56"
-            android:textSize="48px"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/et_nickname"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:paddingLeft="20dp"
-            android:background="@layout/edittext_border"
-            android:fontFamily="@font/roboto_light_italic"
-            android:hint="Joonie"
-            android:lines="2"
-            android:maxLength="150"
-            android:textSize="48px" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="family name"
-            android:textColor="#3F3D56"
-            android:textSize="48px"
-            android:textStyle="bold" />
-        <EditText
-            android:id="@+id/et_family"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:paddingLeft="20dp"
-            android:background="@layout/edittext_border"
-            android:fontFamily="@font/roboto_light_italic"
-            android:hint="The Potato Chips"
-            android:lines="2"
-            android:maxLength="150"
-            android:textSize="48px" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="family password"
-            android:textColor="#3F3D56"
-            android:textSize="48px"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:background="@layout/edittext_border"
-            android:fontFamily="@font/roboto_light_italic"
-            android:hint="Chipers123"
-            android:inputType="textPassword"
-            android:lines="2"
-            android:maxLength="150"
-            android:textSize="48px"  />
+            <TextView
+                android:layout_width="276dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="140dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="First, join your family!"
+                android:textColor="#3F3D56"
+                android:textSize="72px"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="right"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/buttonstuff"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="#FFFFFF"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="231dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="got a nickname?"
+                android:textColor="#3F3D56"
+                android:textSize="48px"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@layout/edittext_border"
+                android:fontFamily="@font/roboto_light_italic"
+                android:hint="Joonie"
+                android:lines="2"
+                android:maxLength="150"
+                android:paddingLeft="20dp"
+                android:textSize="48px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="family name"
+                android:textColor="#3F3D56"
+                android:textSize="48px"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@layout/edittext_border"
+                android:fontFamily="@font/roboto_light_italic"
+                android:hint="The Potato Chips"
+                android:lines="2"
+                android:maxLength="150"
+                android:paddingLeft="20dp"
+                android:textSize="48px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="family password"
+                android:textColor="#3F3D56"
+                android:textSize="48px"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@layout/edittext_border"
+                android:fontFamily="@font/roboto_light_italic"
+                android:hint="Chipers123"
+                android:inputType="textPassword"
+                android:lines="2"
+                android:maxLength="150"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="48px" />
+
+            <Button
+                android:id="@+id/button_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/buttonstuff"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Done"
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="231dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

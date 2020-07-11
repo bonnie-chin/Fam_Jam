@@ -4,31 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnboardingActivity">
+    tools:context=".OnboardingActivity"
+    android:background="#FEF5EF">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button_create"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="create my family"
-            android:background="@drawable/buttonstuff"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="#FFFFFF"
-            />
-        <Button
-            android:id="@+id/button_join"
-            android:padding="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="join my family"/>
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relativelayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="330px"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/myImageViewText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/myImageView"
+                    android:layout_alignBottom="@id/myImageView"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="1dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="FamJam"
+                    android:textColor="#384862"
+                    android:textSize="144px" />
+            </RelativeLayout>
+
+            <Button
+                    android:id="@+id/button_create"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:background="@drawable/buttonstuff"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="create my family"
+                    android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/button_join"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/buttonblue"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="join my family"
+                android:textColor="#6B8B9D" />
+
+                <Button
+                    android:id="@+id/access_missions"
+                    android:padding="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:text="access missions!"/>
+
+            <ImageView
+                android:layout_width="722px"
+                android:layout_height="649px"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/onboardpeeps" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

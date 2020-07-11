@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootRL"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fullprofilebg">
+
+    <TextView
+        android:layout_width="241dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-11dp"
+        android:layout_marginBottom="620dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Bonnie"
+        android:textColor="#FEF5EF"
+        android:textSize="72px"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="133dp"
+        android:layout_height="187dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="524dp"
+        android:src="@drawable/personprofilepicture" />
+
+    <TextView
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="465dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Badges"
+        android:textColor="#384862"
+        android:textSize="72px"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="57dp"
+        android:layout_height="104dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="309dp"
+        android:layout_marginBottom="355dp"
+        android:src="@drawable/onfire" />
+
+    <ImageView
+        android:layout_width="94dp"
+        android:layout_height="93dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="364dp"
+        android:src="@drawable/besties" />
+
+    <ImageView
+        android:layout_width="66dp"
+        android:layout_height="94dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="226dp"
+        android:layout_marginBottom="358dp"
+        android:src="@drawable/mooch" />
+
+    <ImageView
+        android:layout_width="66dp"
+        android:layout_height="94dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="333dp"
+        android:src="@drawable/mvp" />
+
+    <TextView
+        android:layout_width="241dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="292dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Your Progress"
+        android:textColor="#384862"
+        android:textSize="72px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="233dp"
+        android:fontFamily="@font/poppins"
+        android:text="these are your points week over week since
+you joined the family!"
+        android:textColor="#384862"
+        android:textSize="36px" />
+
+    <ImageView
+        android:layout_width="274dp"
+        android:layout_height="265dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="-28dp"
         android:src="@drawable/graph" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
