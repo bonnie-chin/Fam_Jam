@@ -56,7 +56,7 @@ public class CreateFamilyActivity extends AppCompatActivity {
                 final String fId = famRef.push().getKey();
 
                 // creates new family object
-                Family f = new Family(fId, family, password);
+                Family f = new Family(fId, family, password, user.getUid());
                 famRef.child(fId).setValue(f)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

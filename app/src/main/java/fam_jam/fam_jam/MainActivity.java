@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
-        final Fragment mission = new MissionsFragment();
+        final MissionsFragment mission = new MissionsFragment();
         loadFragment(mission);
 
         fireRef.child("members").child(user.getUid()).addValueEventListener(new ValueEventListener() {
@@ -54,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Member m = dataSnapshot.getValue(Member.class);
                 LoginActivity.famId = m.getFamId();
-                ((MissionsFragment) mission).getMissions();
-                AlarmReceiver.endWeek();
-
+                mission.getMissions();
+//                AlarmReceiver.endWeek();
             }
 
             @Override

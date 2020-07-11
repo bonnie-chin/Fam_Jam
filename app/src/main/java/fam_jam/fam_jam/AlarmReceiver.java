@@ -65,8 +65,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     public static void endWeek(){
 
-
-
         // Firebase
         final DatabaseReference famRef = FirebaseDatabase.getInstance().getReference().child("families").child(famId);
         famRef.child("members").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,30 +72,37 @@ public class AlarmReceiver extends BroadcastReceiver {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot s : dataSnapshot.getChildren()) {
 
-                    // makes daily missions
-                    for (int i=0; i<7; i++){
-                        int rand = (int)Math.floor(Math.random()*3);
-                        String d = famRef.child("missions").push().getKey();
-                        Mission m = new Mission(d, rand, 2);
-                        // adds mission
-                        famRef.child("missions").child(d).setValue(m);
-
-                        // TODO - add in time
-                    }
-
+//                    // makes daily missions
+//                    for (int i=0; i<7; i++){
+//                        int rand = (int)Math.floor(Math.random()*3);
+//                        String d = famRef.child("missions").push().getKey();
+//                        Mission m = new Mission(d, rand, 2);
+//                        // adds mission
+//                        famRef.child("missions").child(d).setValue(m);
+//
+//                        // TODO - add in time
+//                    }
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
+        // makes daily missions
+        for (int i=0; i<7; i++){
+//            int rand = (int)Math.floor(Math.random()*3);
+            int rand = 1;
+            String d = famRef.child("missions").push().getKey();
+            Mission m = new Mission(d, rand, 2);
+            // adds mission
+            famRef.child("missions").child(d).setValue(m);
 
+            // TODO - add in time
+        }
 
-
+        // TODO - weekly missions by admin maybe
 
     }
 }
