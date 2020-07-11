@@ -89,7 +89,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="The Potato Chips"
                                     android:textColor="#384862"
                                     android:textSize="36px" />
                             </LinearLayout>
@@ -140,7 +139,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="fAmiLyb0nDiNg"
                                     android:textColor="#384862"
                                     android:textSize="36px" />
                             </LinearLayout>
@@ -311,11 +309,11 @@
                                 android:src="@drawable/badge" />
 
                             <TextView
+                                android:id="@+id/count_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="5"
                                 android:textColor="#384862"
                                 android:textSize="72px" />
 
