@@ -64,7 +64,7 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
         layoutManager = new LinearLayoutManager(main);
         recyclerView.setLayoutManager(layoutManager);
 
-        msgView = view.findViewById(R.id.no_new_requests);
+        // msgView = view.findViewById(R.id.no_new_requests);
 
         mAdapter = new ItemAdapter(missions, main);
         recyclerView.setAdapter(mAdapter);

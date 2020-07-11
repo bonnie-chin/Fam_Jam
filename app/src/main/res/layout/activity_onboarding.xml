@@ -11,13 +11,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+
         <Button
             android:id="@+id/button_create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="create my family"/>
+            android:padding="20dp"
+            android:text="create my family"
+            android:background="@drawable/buttonstuff"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#FFFFFF"
+            />
         <Button
             android:id="@+id/button_join"
+            android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="join my family"/>
