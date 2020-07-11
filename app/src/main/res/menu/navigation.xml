@@ -3,18 +3,22 @@
 
     <item
         android:id="@+id/navigation_missions"
+        android:icon="@drawable/ic_baseline_dashboard_24"
         android:title="missions" />
 
     <item
         android:id="@+id/navigation_leaderboard"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
         android:title="logout" />
 
     <item
         android:id="@+id/navigation_family"
+        android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="family" />
 
     <item
         android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="profile" />
 
 
