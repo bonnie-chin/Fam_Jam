@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         // views in card
         public TextView pointsTv, titleTv, timeTopTv;
         public ImageView iconImg;
+        public LinearLayout cardBack;
         public android.widget.Button doneButton;
 
         public TextView textView;
@@ -59,6 +61,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             timeTopTv = v.findViewById(R.id.card_time_top);
             iconImg = v.findViewById(R.id.mission_icon);
             doneButton = v.findViewById(R.id.done_button);
+            cardBack = v.findViewById(R.id.cardback);
         }
     }
 
@@ -114,7 +117,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 header = "DAY | ";
                 break;
             case 2:
-                header = "RIGHT NOW | ";
+                header = "NOW | ";
                 break;
         }
         switch (m.getStatus()){
@@ -128,6 +131,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                          holder.doneButton.setBackgroundResource(R.drawable.completemissionpink);
                          holder.timeTopTv.setTextColor(Color.parseColor("#E2978D"));
                          holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
+                         holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
                          // set styling for right now
                          // holder.timeTopTv.setTextColor();
 
@@ -136,11 +140,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                          holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
                          holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
                          holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
+                         holder.cardBack.setBackgroundResource(R.drawable.missioncardgreen);
                          break;
                      case 3:
                          holder.doneButton.setBackgroundResource(R.drawable.completemissionblue);
                          holder.timeTopTv.setTextColor(Color.parseColor("#6B8B9D"));
                          holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
+                         holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
                          break;
                  }
 
