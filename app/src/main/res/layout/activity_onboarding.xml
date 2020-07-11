@@ -74,14 +74,6 @@
                 android:text="join my family"
                 android:textColor="#6B8B9D" />
 
-                <Button
-                    android:id="@+id/access_missions"
-                    android:padding="10dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:text="access missions!"/>
 
             <ImageView
                 android:layout_width="722px"

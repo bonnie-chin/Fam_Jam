@@ -17,7 +17,6 @@ public class OnboardingActivity extends AppCompatActivity {
 
         joinButton = findViewById(R.id.button_join);
         createButton = findViewById(R.id.button_create);
-        missionButton = findViewById(R.id.access_missions);
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
