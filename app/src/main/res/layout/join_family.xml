@@ -120,7 +120,7 @@
                 android:background="@drawable/buttonstuff"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Done"
-                android:textColor="#FFFFFF"
+                android:textColor="#FEF5EF"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="231dp" />
 
