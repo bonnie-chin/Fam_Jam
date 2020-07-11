@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="3dp"
-                        android:text="(Judy)"/>
+                        android:text="(Judy)" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"

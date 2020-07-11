@@ -10,16 +10,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MissionTemplate {
 
-    private String id, title, description, imgUrl;
+    private String title, description, imgUrl;
     private long timeAllotted;
-    private int points;
+    private int id, points;
 
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
     public MissionTemplate(){}
 
-    public MissionTemplate(String tId){
+    public MissionTemplate(int tId){
         this.id = tId;
     }
 
@@ -63,11 +63,12 @@ public class MissionTemplate {
         this.title = title;
     }
 
-    public String getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

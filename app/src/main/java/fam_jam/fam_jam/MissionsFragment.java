@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.database.DataSnapshot;
@@ -68,10 +69,10 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         mAdapter = new ItemAdapter(missions, main);
         recyclerView.setAdapter(mAdapter);
-//        getMissions();
 
         // shows message if there are no new requests
         if (missions.isEmpty()){
+            Toast.makeText(main, "No new missions!", Toast.LENGTH_SHORT).show();
 //            msgView.setVisibility(View.GONE);
         }
 
@@ -84,18 +85,18 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void getMissions() {
         swipeRefreshLayout.setRefreshing(true);
         // retrieves info from database
-        DatabaseReference missionsRef = fireRef.child(famId).child("missions");
+        DatabaseReference missionsRef = fireRef.child("families").child(famId).child("missions");
         missionsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 // clears the list to fetch new data
                 missions.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                    Mission missions = itemSnapshot.getValue(Mission.class);
+                    Mission m = itemSnapshot.getValue(Mission.class);
                     // only displays if the mission is yours
-                    if (missions.getStatus()==0) {
+                    if (m.getStatus()==0) {
                         // TODO - check who it's assigned to
-                        MissionsFragment.this.missions.add(missions);
+                        MissionsFragment.this.missions.add(m);
                     }
                 }
 
