@@ -172,4 +172,12 @@ you joined the family!"
         android:layout_marginEnd="104dp"
         android:layout_marginBottom="-3dp"
         android:src="@drawable/graph" />
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        />
+
 </RelativeLayout>
