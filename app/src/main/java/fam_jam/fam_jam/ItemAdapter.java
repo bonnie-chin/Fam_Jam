@@ -2,10 +2,9 @@ package fam_jam.fam_jam;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.location.Location;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,10 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import fam_jam.fam_jam.model.Mission;
@@ -29,24 +26,26 @@ import fam_jam.fam_jam.model.Mission;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
     private List<Mission> missionList;
-    private Location location;
     public MainActivity main;
+
+    // Firebase
+    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // views in card
-        public TextView topTv, messageTv, productTv, timeTv;
+        public TextView pointsTv, titleTv, timeTopTv;
         public ImageView iconImg;
-        public android.widget.Button acceptButton;
+        public android.widget.Button doneButton;
 
         public TextView textView;
         public MyViewHolder(View v) {
             super(v);
-            topTv = v.findViewById(R.id.card_distance);
-            messageTv = v.findViewById(R.id.card_message);
-            productTv = v.findViewById(R.id.card_product);
-           /* iconImg = v.findViewById(R.id.product_icon);
-            timeTv = v.findViewById(R.id.card_time);
-            acceptButton = v.findViewById(R.id.accept_button);*/
+            pointsTv = v.findViewById(R.id.card_points);
+            titleTv = v.findViewById(R.id.card_title);
+            timeTopTv = v.findViewById(R.id.card_time_top);
+            iconImg = v.findViewById(R.id.mission_icon);
+            doneButton = v.findViewById(R.id.done_button);
         }
     }
 
@@ -70,9 +69,47 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     // replaces the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final Mission r = missionList.get(position);
+        final Mission m = missionList.get(position);
 
-        holder.acceptButton.setOnClickListener(new View.OnClickListener() {
+        fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(m.gettId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // card header
+        String header = "";
+        switch (m.getType()){
+            case 0:
+                header = "WEEK | ";
+                break;
+            case 1:
+                header = "DAY | ";
+                break;
+            case 2:
+                header = "RIGHT NOW | ";
+                break;
+        }
+        switch (m.getStatus()){
+            case 0:
+                header += m.getStringTimeLeft((long)m.getTimeCreated());
+                break;
+            case 1:
+                header += "COMPLETED";
+                break;
+            case 2:
+                header += "MISSED";
+                break;
+        }
+        holder.timeTopTv.setText(header);
+
+        holder.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(main)
