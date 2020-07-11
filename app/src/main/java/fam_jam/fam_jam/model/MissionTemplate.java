@@ -35,7 +35,7 @@ public class MissionTemplate {
         return timeAllotted;
     }
 
-    public void setTimeAllotted(long timeAllotted) {
+    public void setTimeAllotted(int timeAllotted) {
         this.timeAllotted = timeAllotted;
     }
 

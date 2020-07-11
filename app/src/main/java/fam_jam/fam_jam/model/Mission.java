@@ -6,12 +6,12 @@ import java.util.Date;
 
 public class Mission implements Comparable<Mission>{
 
-    private String id, tId;
-    private int status, type;
+    private String id;
+    private int status, type, tId;
     private Object timeCreated;
     public Mission(){}
 
-    public Mission(String missionId, String templateId, int missionType){
+    public Mission(String missionId, int templateId, int missionType){
         this.id = missionId;
         this.type = missionType;
         this.tId = templateId;
@@ -79,11 +79,11 @@ public class Mission implements Comparable<Mission>{
         this.type = type;
     }
 
-    public String gettId() {
+    public int gettId() {
         return tId;
     }
 
-    public void settId(String tId) {
+    public void settId(int tId) {
         this.tId = tId;
     }
 }

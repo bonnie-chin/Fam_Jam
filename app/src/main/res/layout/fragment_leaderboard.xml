@@ -98,8 +98,10 @@
         </RelativeLayout>
     </RelativeLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -107,10 +109,10 @@
             android:fontFamily="@font/roboto_bold"
             android:text="Family Badges"
             android:textColor="#384862"
-            android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
             android:textSize="72px" />
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -129,16 +131,67 @@
                 </android.support.v7.widget.RecyclerView>
             </android.support.v4.widget.SwipeRefreshLayout>-->
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="125dp"
+                android:src="@drawable/monthbadge"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/yearbadge"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/onfirebadge"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="125dp"
+                android:src="@drawable/hardworking"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="160dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/beginnerbadge"/>
+
+
+        </RelativeLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_bold"
             android:text="To Earn"
             android:textColor="#384862"
+            android:layout_marginBottom="15dp"
             android:textSize="72px"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="125dp"
+                android:src="@drawable/lukewarmbadge"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/truefambadge"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="120dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/mvpsbadge"/>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
