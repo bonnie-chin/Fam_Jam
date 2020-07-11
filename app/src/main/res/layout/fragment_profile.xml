@@ -1,183 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootRL"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fullprofilebg">
+    android:background="#FEF5EF">
 
-    <TextView
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-25dp"
-        android:layout_marginBottom="622dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Bonnie"
-        android:textColor="#FEF5EF"
-        android:textSize="72px"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-42dp"
-        android:layout_marginBottom="591dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="34 missions"
-        android:textColor="#FEF5EF"
-        android:textSize="32px"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-44dp"
-        android:layout_marginBottom="562dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="10 day streak"
-        android:textColor="#FEF5EF"
-        android:textSize="32px"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="9dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="125dp"
-        android:layout_marginEnd="207dp"
-        android:layout_marginBottom="592dp"
-        android:src="@drawable/flag" />
-
-    <ImageView
-        android:layout_width="11dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="138dp"
-        android:layout_marginEnd="205dp"
-        android:layout_marginBottom="548dp"
-        android:src="@drawable/flame" />
-
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="88dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="495dp"
-        android:src="@drawable/bluerectangle" />
-
-    <ImageView
-        android:layout_width="133dp"
-        android:layout_height="187dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="244dp"
-        android:layout_marginBottom="527dp"
-        android:src="@drawable/personprofilepicture" />
-
-    <TextView
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="460dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Badges"
-        android:textColor="#384862"
-        android:textSize="72px"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="57dp"
-        android:layout_height="104dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="319dp"
-        android:layout_marginBottom="348dp"
-        android:src="@drawable/onfire" />
-
-    <ImageView
-        android:layout_width="89dp"
-        android:layout_height="85dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="357dp"
-        android:src="@drawable/besties" />
-
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="88dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="231dp"
-        android:layout_marginBottom="356dp"
-        android:src="@drawable/mooch" />
-
-    <ImageView
-        android:layout_width="71dp"
-        android:layout_height="102dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="348dp"
-        android:src="@drawable/mvp" />
-
-    <TextView
-        android:layout_width="241dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="135dp"
-        android:layout_marginBottom="292dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Your Progress"
-        android:textColor="#384862"
-        android:textSize="72px"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="236dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="142dp"
-        android:layout_marginBottom="242dp"
-        android:fontFamily="@font/poppins"
-        android:text="these are your points week over week since
-you joined the family!"
-        android:textColor="#384862"
-        android:textSize="36px" />
-
-    <ImageView
-        android:layout_width="274dp"
-        android:layout_height="265dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="-3dp"
-        android:src="@drawable/graph" />
-
-    <Button
-        android:id="@+id/button_logout"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="logout"
-        />
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/profilebackground"
+            android:layout_alignParentTop="true"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp"
+            android:paddingTop="30dp">
+            <ImageView
+                android:layout_width="133dp"
+                android:layout_height="187dp"
+                android:src="@drawable/personprofilepicture"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Bonnie"
+                    android:textColor="#FEF5EF"
+                    android:textSize="72px"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/flag" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_marginLeft="10dp"
+                        android:text="34 missions"
+                        android:textColor="#FEF5EF"
+                        android:textSize="32px"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/flame" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_marginLeft="10dp"
+                        android:text="10 day streak"
+                        android:textColor="#FEF5EF"
+                        android:textSize="32px"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/points"
+                        android:layout_width="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/bluerectangle" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/points"
+                        android:layout_alignBottom="@id/points"
+                        android:paddingTop="3dp"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="365pts"
+                        android:textColor="#FEF5EF"
+                        android:textSize="24px"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Badges"
+                android:textColor="#384862"
+                android:textSize="72px" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Your Progress"
+                android:textColor="#384862"
+                android:textSize="72px" />
+
+            <TextView
+                android:layout_width="281dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins"
+                android:text="these are your points week over week since you joined the family!"
+                android:textColor="#384862"
+                android:textSize="36px" />
+            <ImageView
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/graph" />
+
+
+
+            <Button
+                android:id="@+id/button_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/buttonstuff"
+                android:fontFamily="@font/poppins_semibold"
+                android:letterSpacing="0.1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="logout"
+                android:textColor="#FEF5EF" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

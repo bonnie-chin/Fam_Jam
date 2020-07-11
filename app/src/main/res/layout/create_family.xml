@@ -135,7 +135,7 @@
                 android:fontFamily="@font/poppins_semibold"
                 android:letterSpacing="0.1"
                 android:text="Done"
-                android:textColor="#FFFFFF"
+                android:textColor="#FEF5EF"
                 tools:layout_editor_absoluteX="98dp"
                 tools:layout_editor_absoluteY="231dp" />
 
