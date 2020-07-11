@@ -57,7 +57,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="16dp"
                             android:layout_marginLeft="10dp"
                             android:text="5 days left"
                             android:textColor="#E2978D"
@@ -69,6 +69,7 @@
                             app:cardBackgroundColor="#FAC16B"
                             android:layout_marginTop="15dp"
                             android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="2dp"
 
                             >
                             <TextView
@@ -87,7 +88,7 @@
                     </LinearLayout>
                     <TextView
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
                         android:fontFamily="@font/roboto_bold"
                         android:layout_width="wrap_content"
@@ -108,7 +109,7 @@
                         android:textColor="#FEFEFE"
                         android:gravity="left|center_vertical"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textSize="24px">
+                        android:textSize="28px">
 
                     </Button>
                 </LinearLayout>
@@ -128,7 +129,16 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Current Missions"
+            android:textColor="#384862"
+            android:textSize="72px"
+            android:textStyle="bold" />
 
 
         <!-- Refreshes Requests -->

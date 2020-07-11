@@ -73,7 +73,7 @@
                         android:id="@+id/top_card"
                         android:layout_width="126px"
                         android:layout_height="62px"
-                        android:layout_marginTop = "10dp"
+                        android:layout_marginTop = "20dp"
                         android:layout_marginLeft="-100dp"
                         app:cardBackgroundColor="#FAC16B"
                         app:cardCornerRadius="5dp">
@@ -146,12 +146,14 @@
                     android:id="@+id/done_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/roboto_bold"
-                    android:background="@drawable/donebtn"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:background="@drawable/doneCardBtn"
                     android:textColor="#FEF5EF"
-                    android:textSize="30px"
-                    android:text="MARK DONE"
-                    android:drawableTop="@drawable/ic_baseline_check_24"
+                    android:textSize="28px"
+                    android:gravity="bottom | center"
+                    android:paddingBottom="20dp"
+                    android:text="MARK\nDONE"
+                    android:lineHeight="13dp"
                     android:drawablePadding="-60dp"
                     />
 
