@@ -152,7 +152,7 @@
                     android:layout_height="80dp"
                     android:layout_marginLeft="40dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/mooch" />
+                    android:src="@drawable/mvpbadge" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -182,45 +182,120 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Your Progress"
+                android:text="Statistics"
                 android:textColor="#384862"
                 android:textSize="72px" />
-
-            <TextView
-                android:layout_width="281dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins"
-                android:text="these are your points week over week since you joined the family!"
-                android:textColor="#384862"
-                android:textSize="36px" />
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph" />
-
-
-
-            <Button
-                android:id="@+id/button_logout"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/buttonstuff"
-                android:fontFamily="@font/poppins_semibold"
-                android:letterSpacing="0.1"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="logout"
-                android:textColor="#FEF5EF" />
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="30dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/greenrectangle" />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_horizontal"
+                        android:text="35"
+                        android:textSize="72px"
+                        />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:text="day streak"
+
+                        android:textSize="36px"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="50dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/greenrectangle" />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_horizontal"
+                        android:text="45"
+                        android:textSize="72px"
+                        />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:text="points"
+
+                        android:textSize="36px"
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="50dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/greenrectangle" />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_horizontal"
+                        android:text="63"
+                        android:textSize="72px"
+                        />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:textColor="#384862"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:text="missions"
+
+                        android:textSize="36px"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+
+
+
+
         </LinearLayout>
     </ScrollView>
 
