@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 import fam_jam.fam_jam.model.Mission;
+import fam_jam.fam_jam.model.MissionTemplate;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 // Generates the cards based on data from the Firebase (any requests within the last 30 minutes)
 
@@ -71,15 +75,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Mission m = missionList.get(position);
 
+        // mission template
         fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(m.gettId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                MissionTemplate t = dataSnapshot.getValue(MissionTemplate.class);
+                holder.titleTv.setText(t.getTitle());
+                String points = "+ " + t.getPoints() + " pts";
+                holder.pointsTv.setText(points);
+                // TODO - fix this later
+//                holder.iconImg.setImageResource(t.getImgUrl());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(main.getApplicationContext(), "Oops! Something went wrong, please try again.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -109,6 +119,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         }
         holder.timeTopTv.setText(header);
 
+        // card button
         holder.doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
