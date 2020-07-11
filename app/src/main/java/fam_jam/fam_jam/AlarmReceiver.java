@@ -23,10 +23,12 @@ import java.util.GregorianCalendar;
 
 import fam_jam.fam_jam.model.Member;
 import fam_jam.fam_jam.model.Mission;
+import fam_jam.fam_jam.model.MissionTemplate;
 
 import static android.content.Context.ALARM_SERVICE;
 import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.LoginActivity.user;
+import static fam_jam.fam_jam.MainActivity.fireRef;
 
 // Custom class to schedule a water reset at midnight
 public class AlarmReceiver extends BroadcastReceiver {
@@ -108,14 +110,28 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // makes daily missions
         for (int i=0; i<7; i++){
-//            int rand = (int)Math.floor(Math.random()*3);
-            int rand = 1;
-            String d = famRef.child("missions").push().getKey();
 
-            long start = System.currentTimeMillis() + (3600*1000*2);
-            Mission m = new Mission(d, rand, 2, start);
-            // adds mission
-            famRef.child("missions").child(d).setValue(m);
+            // int rand = (int)Math.floor(Math.random()*3);
+            final int rand = 1;
+            final int type = 3;
+            DatabaseReference templateRef = fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(rand));
+            templateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
+                    long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
+                    long start = System.currentTimeMillis() + (3600*1000*2);
+                    long end = duration + start;
+
+                    String d = famRef.child("missions").push().getKey();
+                    Mission m = new Mission(d, rand, type, start, end);
+                    // adds mission
+                    famRef.child("missions").child(d).setValue(m);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
 
             // TODO - add in time
         }

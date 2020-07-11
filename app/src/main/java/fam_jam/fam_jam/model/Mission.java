@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
@@ -18,7 +19,7 @@ public class Mission implements Comparable<Mission>{
     private long timeCreated, startTime, endTime;
     public Mission(){}
 
-    public Mission(String missionId, int templateId, int missionType, long start){
+    public Mission(String missionId, int templateId, int missionType, long start, long end){
         this.id = missionId;
         this.type = missionType;
         this.tId = templateId;
@@ -27,23 +28,11 @@ public class Mission implements Comparable<Mission>{
         // records time of request
         this.timeCreated = System.currentTimeMillis();
         this.startTime = start;
-
-        fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(tId)).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
-                long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
-                endTime = duration + startTime;
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
+        this.endTime = end;
     }
 
     public int getTimeLeft(){
-        // finds time difference in minutes
+        // finds time difference in seconds
         Long diff = endTime - System.currentTimeMillis();
         int secDiff = (int) (diff / 1000);
         return secDiff;
