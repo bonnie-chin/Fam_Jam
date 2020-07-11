@@ -15,7 +15,7 @@ import android.widget.TextView;
 import fam_jam.fam_jam.model.Member;
 
 public class LeaderboardFragment extends Fragment {
-    
+
     LayoutInflater layoutInflater;
     LinearLayout leaders;
     @Override
@@ -33,10 +33,7 @@ public class LeaderboardFragment extends Fragment {
         for (int i = 0; i < 4; i++) {
             View myview = layoutInflater.inflate(R.layout.leaderboardcard, null, false);
             leaders.addView(myview);
-
-            Member m = snapshot.getValue(Member.class);
-            TextView name = myview.findViewById(R.id.name_tv);
-            name.setText(m.getName());
+            
 
         }
     }
