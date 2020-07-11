@@ -110,7 +110,7 @@
                         android:text="MISSION ACCOMPLISHED"
                         android:textColor="#FEFEFE"
                         android:gravity="left|center_vertical"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins_medium"
                         android:textSize="36px">
 
                     </Button>
