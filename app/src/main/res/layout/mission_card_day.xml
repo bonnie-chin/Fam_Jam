@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/missioncardgreen">
+            android:background="@drawable/missioncardgrey">
 
             <LinearLayout
                 android:layout_width="250dp"
@@ -66,7 +66,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="25dp"
                         android:text="RIGHT NOW  |  18 min left"
-                        android:textColor="#E2978D"
+                        android:textColor="#8D8D8D"
                         android:textSize="36px"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins_semibold"/>
@@ -76,7 +76,7 @@
                         android:layout_height="62px"
                         android:layout_marginTop = "20dp"
                         android:layout_marginLeft="-50dp"
-                        app:cardBackgroundColor="#FAC16B"
+                        app:cardBackgroundColor="#8D8D8D"
                         app:cardCornerRadius="5dp">
 
 
@@ -118,7 +118,7 @@
                             android:layout_marginHorizontal="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
-                            android:textColor="#E2978D"
+                            android:textColor="#8D8D8D"
                             android:textFontWeight="500"
                             android:fontFamily="@font/roboto_bold"
                             android:textSize="48px"

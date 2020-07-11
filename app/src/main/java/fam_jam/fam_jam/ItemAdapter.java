@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,6 +53,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         public ImageView iconImg;
         public LinearLayout cardBack;
         public android.widget.Button doneButton;
+        public CardView pointsCard;
 
         public TextView textView;
         public MyViewHolder(View v) {
@@ -62,6 +64,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             iconImg = v.findViewById(R.id.mission_icon);
             doneButton = v.findViewById(R.id.done_button);
             cardBack = v.findViewById(R.id.cardback);
+            pointsCard = v.findViewById(R.id.top_card);
         }
     }
 
@@ -125,6 +128,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 header += m.getStringTimeLeft((long)m.getTimeCreated());
                 // changes look based on active status and type
                 // TODO - change colors here
+                holder.pointsCard.setCardBackgroundColor(Color.parseColor("#FAC16B"));
 
                  switch (m.getType()){
                      case 1:
