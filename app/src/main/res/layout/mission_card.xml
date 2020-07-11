@@ -78,6 +78,7 @@
                         app:cardBackgroundColor="#FAC16B"
                         app:cardCornerRadius="5dp">
 
+
                         <TextView
                             android:id="@+id/card_points"
                             android:layout_width="match_parent"
