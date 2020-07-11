@@ -84,16 +84,17 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void getMissions() {
         swipeRefreshLayout.setRefreshing(true);
         // retrieves info from database
-        DatabaseReference requestRef = fireRef.child(famId).child("missions");
-        requestRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference missionsRef = fireRef.child(famId).child("missions");
+        missionsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 // clears the list to fetch new data
                 missions.clear();
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Mission missions = itemSnapshot.getValue(Mission.class);
-                    // only displays if the request is pending, close enough, and recent enough
+                    // only displays if the mission is yours
                     if (missions.getStatus()==0) {
+                        // TODO - check who it's assigned to
                         MissionsFragment.this.missions.add(missions);
                     }
                 }
