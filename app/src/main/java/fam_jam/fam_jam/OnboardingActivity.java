@@ -31,7 +31,6 @@ public class OnboardingActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
 

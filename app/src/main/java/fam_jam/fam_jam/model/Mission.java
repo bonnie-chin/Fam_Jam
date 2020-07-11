@@ -44,7 +44,7 @@ public class Mission implements Comparable<Mission>{
 
     public int getTimeLeft(){
         // finds time difference in minutes
-        Long diff = (long)endTime - new Date().getTime();
+        Long diff = endTime - System.currentTimeMillis();
         int secDiff = (int) (diff / 1000);
         return secDiff;
     }

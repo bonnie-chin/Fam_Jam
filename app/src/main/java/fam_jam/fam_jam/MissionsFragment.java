@@ -91,10 +91,10 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Mission m = itemSnapshot.getValue(Mission.class);
                     // only displays if the mission is yours
-                    if (m.getStatus()==0) {
+//                    if () {
                         // TODO - check who it's assigned to
                         MissionsFragment.this.missions.add(m);
-                    }
+                    // }
                 }
 
                 // sorts data
