@@ -66,7 +66,7 @@
                         android:layout_marginTop="25dp"
                         android:text="RIGHT NOW  |  18 min left"
                         android:textColor="#E2978D"
-                        android:textSize="30px"
+                        android:textSize="36px"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto_bold"/>
                     <android.support.v7.widget.CardView
@@ -120,7 +120,7 @@
                             android:textColor="#E2978D"
                             android:textFontWeight="500"
                             android:fontFamily="@font/roboto_bold"
-                            android:textSize="40px"
+                            android:textSize="48px"
                             android:text="Give a Hug"/>
                         <TextView
                             android:id="@+id/card_sender"
@@ -129,7 +129,7 @@
                             android:layout_marginHorizontal="20dp"
                             android:layout_marginBottom="10dp"
                             android:textColor="#808080"
-                            android:textSize="24px"
+                            android:textSize="32px"
                             android:fontFamily="@font/roboto_bold"
                             android:text="to Grace"
                             />
