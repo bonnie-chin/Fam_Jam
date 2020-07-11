@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Bonnie"
+                    android:text="Grace"
                     android:textColor="#FEF5EF"
                     android:textSize="72px"/>
                 <LinearLayout
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Badges"
                 android:textColor="#384862"
@@ -154,12 +154,33 @@
                     android:adjustViewBounds="true"
                     android:src="@drawable/mooch" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/busybee" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/realone" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Your Progress"
                 android:textColor="#384862"
