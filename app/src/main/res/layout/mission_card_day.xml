@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="25dp"
-                        android:text="RIGHT NOW  |  18 min remaining"
+                        android:text="RIGHT NOW  |  18 min left"
                         android:textColor="#E2978D"
                         android:textSize="30px"
                         android:textStyle="bold"
