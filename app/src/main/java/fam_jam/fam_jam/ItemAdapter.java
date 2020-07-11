@@ -73,7 +73,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                                                        int viewType) {
         // create a new card view
         View card = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mission_card, parent, false);
+                .inflate(R.layout.mission_card_now, parent, false);
         MyViewHolder vh = new MyViewHolder(card);
         return vh;
     }
