@@ -32,24 +32,85 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="200dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="#FEF5EF"
                 app:cardCornerRadius="10dp">
+
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="20dp"
+                            android:layout_gravity="top"
+                            android:layout_height="20dp"
+                            android:src="@drawable/timefam">
+                        <TextView
+                            android:layout_width="wrap_content "
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="5 days left"
+                            android:textColor="#E2978D"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="36px"/>
+                        <android.support.v7.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#FAC16B"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="+30 pts"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="7dp"
+                                android:paddingRight="7dp"
+                                android:textSize="24px"
+                                android:textColor="#FEFEFE"
+                                android:fontFamily="@font/poppins_semibold"/>
+
+                        </android.support.v7.widget.CardView>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#384862"
+
+                        android:text="Have a discussion on things you want to improve in the family."/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_width="30dp"
-                        android:layout_gravity="top"
-                        android:layout_height="30dp"
-                        android:src="@drawable/timefam">
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@drawable/missionaccomplishedblue"
+                        android:text="MISSION ACCOMPLISHED"
+                        android:textColor="#FEFEFE"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textSize="24px" />
                 </LinearLayout>
+
+
             </android.support.v7.widget.CardView>
 
             <ImageView
@@ -60,6 +121,7 @@
                 android:src="@drawable/family1">
 
             </ImageView>
+
 
         </LinearLayout>
 
