@@ -71,7 +71,7 @@
                         android:fontFamily="@font/roboto_bold"/>
                     <android.support.v7.widget.CardView
                         android:id="@+id/top_card"
-                        android:layout_width="150px"
+                        android:layout_width="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:layout_height="62px"
                         android:layout_marginTop = "20dp"
@@ -88,13 +88,10 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10px"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="+30pts"
+                            android:text="+3"
                             android:gravity="center"
                             android:textColor="#FEF5EF"
-                            android:textSize="30px"
-                            android:textStyle="bold"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:textSize="30px"/>
 
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
