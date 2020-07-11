@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class OnboardingActivity extends AppCompatActivity {
 
-    private Button joinButton, createButton, missionButton;
+    private Button joinButton, createButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +31,7 @@ public class OnboardingActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        missionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(OnboardingActivity.this, MissionsFragment.class);
-                startActivity(i);
-            }
-        });
+
     }
 
 
