@@ -15,11 +15,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import fam_jam.fam_jam.model.Member;
 import fam_jam.fam_jam.model.Mission;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -65,8 +67,22 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     public static void endWeek(){
 
+        final DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+
+
+        fireRef.child("members").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               Member m = dataSnapshot.getValue(Member.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
         // Firebase
-        final DatabaseReference famRef = FirebaseDatabase.getInstance().getReference().child("families").child(famId);
+        final DatabaseReference famRef = fireRef.child("families").child(famId);
         famRef.child("members").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -95,7 +111,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 //            int rand = (int)Math.floor(Math.random()*3);
             int rand = 1;
             String d = famRef.child("missions").push().getKey();
-            Mission m = new Mission(d, rand, 2);
+
+            long start = System.currentTimeMillis() + (3600*1000*2);
+            Mission m = new Mission(d, rand, 2, start);
             // adds mission
             famRef.child("missions").child(d).setValue(m);
 

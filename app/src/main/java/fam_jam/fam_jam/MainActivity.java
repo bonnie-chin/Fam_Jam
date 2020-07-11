@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> missions;
 
     // Firebase
-    DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+    public static DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
+
+    public static Member member;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         fireRef.child("members").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Member m = dataSnapshot.getValue(Member.class);
-                LoginActivity.famId = m.getFamId();
+                member = dataSnapshot.getValue(Member.class);
+                LoginActivity.famId = member.getFamId();
                 mission.getMissions();
 //                AlarmReceiver.endWeek();
             }

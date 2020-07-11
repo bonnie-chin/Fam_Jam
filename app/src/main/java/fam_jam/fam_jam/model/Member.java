@@ -4,6 +4,7 @@ public class Member {
 
     private String uId, name, email, famId;
     private String[] members;
+    private int points;
 
     public Member(){}
 
@@ -11,6 +12,7 @@ public class Member {
         this.uId = userId;
         this.name = userName;
         this.famId = fId;
+        this.points = 0;
     }
 
     public String getuId() {
@@ -51,5 +53,13 @@ public class Member {
 
     public void setFamId(String famId) {
         this.famId = famId;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

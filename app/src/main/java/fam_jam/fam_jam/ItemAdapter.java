@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,16 @@ import fam_jam.fam_jam.model.MissionTemplate;
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 import static fam_jam.fam_jam.JoinFamilyActivity.famRef;
 import static fam_jam.fam_jam.LoginActivity.famId;
+import static fam_jam.fam_jam.LoginActivity.user;
+import static fam_jam.fam_jam.MainActivity.member;
 
 // Generates the cards based on data from the Firebase (any requests within the last 30 minutes)
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
     private static final String TAG = ItemAdapter.class.getSimpleName();
+
+    private static int mPoints;
+
     private List<Mission> missionList;
     public MainActivity main;
 
@@ -76,6 +82,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Mission m = missionList.get(position);
+        int toAdd;
 
         // mission template
         fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(String.valueOf(m.gettId())).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,6 +94,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 holder.pointsTv.setText(points);
                 // TODO - fix this later
 //                holder.iconImg.setImageResource(t.getImgUrl());
+                mPoints = t.getPoints();
             }
 
             @Override
@@ -113,7 +121,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 header += m.getStringTimeLeft((long)m.getTimeCreated());
                 // changes look based on active status and type
                 // TODO - change colors here
-                // holder.timeTopTv.setTextColor();
+
+                 switch (m.getType()){
+                     case 1:
+                         // set styling for right now
+                         // holder.timeTopTv.setTextColor();
+
+                         break;
+                     case 2:
+                         // set styling for day
+                         break;
+                     case 3:
+                         // set styling for weekly
+                         break;
+                 }
+
                 break;
             case 1:
                 header += "COMPLETED";
@@ -123,6 +145,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 break;
         }
         holder.timeTopTv.setText(header);
+
+
 
         // card button
         holder.doneButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +158,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                         .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
+                                int newPoints = mPoints + member.getPoints();
+                                fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);
                             }
                         })
                         .setNegativeButton("Cancel", null)
@@ -141,10 +167,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             }
         });
 
-
-
     }
-
 
     // returns size of list
     @Override

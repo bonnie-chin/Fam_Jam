@@ -1,9 +1,12 @@
 package fam_jam.fam_jam.model;
 
+import com.google.firebase.database.ServerValue;
+
 public class Family {
 
 
     private String fId, code, password, adminId;
+    private long creationTime;
 
     public Family(){}
 
@@ -12,6 +15,7 @@ public class Family {
         this.code = famCode;
         this.password = famPassword;
         this.adminId = aId;
+        this.creationTime = System.currentTimeMillis();
     }
 
     public String getfId() {
@@ -44,5 +48,13 @@ public class Family {
 
     public void setAdminId(String adminId) {
         this.adminId = adminId;
+    }
+
+    public long getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(long creationTime) {
+        this.creationTime = creationTime;
     }
 }
