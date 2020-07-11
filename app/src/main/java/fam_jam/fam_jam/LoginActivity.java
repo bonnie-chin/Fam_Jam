@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             .createSignInIntentBuilder()
                             .setTheme(R.style.FirebaseLogin)
                             .setIsSmartLockEnabled(false)
+                            .setLogo(R.drawable.logo)
                             .setAvailableProviders(Arrays.asList(
                                     new AuthUI.IdpConfig.GoogleBuilder().build(),
                                     new AuthUI.IdpConfig.EmailBuilder().build()))
