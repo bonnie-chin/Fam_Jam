@@ -44,9 +44,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             topTv = v.findViewById(R.id.card_distance);
             messageTv = v.findViewById(R.id.card_message);
             productTv = v.findViewById(R.id.card_product);
-            iconImg = v.findViewById(R.id.product_icon);
+           /* iconImg = v.findViewById(R.id.product_icon);
             timeTv = v.findViewById(R.id.card_time);
-            acceptButton = v.findViewById(R.id.accept_button);
+            acceptButton = v.findViewById(R.id.accept_button);*/
         }
     }
 
