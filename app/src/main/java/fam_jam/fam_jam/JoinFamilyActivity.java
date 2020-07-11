@@ -65,6 +65,7 @@ public class JoinFamilyActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         DataSnapshot child = dataSnapshot.getChildren().iterator().next();
+                        if (child.exists()){
                         Family f = child.getValue(Family.class);
                         famRef = fireRef.child("families").child(f.getfId());
 
@@ -104,9 +105,15 @@ public class JoinFamilyActivity extends AppCompatActivity {
                                             // failed to save
                                         }
                                     });
-                    } else {
-                            // if passwords don't match
-                            Toast.makeText(JoinFamilyActivity.this, "Incorrect password, please try again!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                                // if passwords don't match
+                                Toast.makeText(getApplicationContext(), "Incorrect password, please try again!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            // if child does not exist
+                            Toast.makeText(getApplicationContext(), "Code not found, please try again!", Toast.LENGTH_SHORT);
                         }
                     }
                     @Override
@@ -114,45 +121,8 @@ public class JoinFamilyActivity extends AppCompatActivity {
 
                     }
                 });
-                // TODO - oop fix this
-
-
-
-//                famRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        Family f = dataSnapshot.getValue(Family.class);
-//                        if (password == f.getPassword()){
-//                            Member u = new Member(user.getUid(), finalNickname, f.getfId());
-//                            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
-//                            userRef.child(user.getUid()).setValue(u)
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                        @Override
-//                                        public void onSuccess(Void aVoid) {
-//                                            // successfully saved
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//                                            // failed to save
-//                                        }
-//                                    });
-//                        } else {
-//                            Toast.makeText(getApplicationContext(), "Incorrect password, please try again!", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//                        Toast.makeText(getApplicationContext(), "Uh-oh, we couldn't find your family! Please check it is spelled correctly and try again.", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-
-
-
             } // end onclick
-        });
-    }
+        }); // end onclick listener
+    } // end oncreate
 
 }
