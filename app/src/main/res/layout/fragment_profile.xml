@@ -152,7 +152,7 @@
                     android:layout_height="80dp"
                     android:layout_marginLeft="40dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/mooch" />
+                    android:src="@drawable/mvpbadge" />
             </LinearLayout>
 
             <TextView
