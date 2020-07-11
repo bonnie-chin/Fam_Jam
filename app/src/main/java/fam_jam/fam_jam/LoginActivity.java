@@ -1,7 +1,5 @@
 package fam_jam.fam_jam;
 
-import fam_jam.fam_jam.model.*;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,14 +9,10 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
@@ -26,7 +20,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
     public static FirebaseUser user;
+    public static String famId;
+
     public String mUsername;
     private static int RC_SIGN_IN = 1;
     private static String ANONYMOUS = null;
@@ -82,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent i = new Intent(this, OnboardingActivity.class);
             this.startActivity(i);
             this.finish();
-
             Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
         } else {
