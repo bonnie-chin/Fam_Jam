@@ -120,8 +120,66 @@
                 android:text="Badges"
                 android:textColor="#384862"
                 android:textSize="72px" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/onfire" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/besties" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/mooch" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/mooch" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/onfire" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/besties" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="40dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/mooch" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
