@@ -2,6 +2,7 @@ package fam_jam.fam_jam;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -124,12 +125,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
                  switch (m.getType()){
                      case 1:
+
                          // set styling for right now
                          // holder.timeTopTv.setTextColor();
 
                          break;
                      case 2:
-                         // set styling for day
+                         holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
+                         holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
                          break;
                      case 3:
                          // set styling for weekly
