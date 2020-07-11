@@ -26,7 +26,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
     public static FirebaseUser user;
+    public static String famId;
+
     public String mUsername;
     private static int RC_SIGN_IN = 1;
     private static String ANONYMOUS = null;
@@ -82,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent i = new Intent(this, OnboardingActivity.class);
             this.startActivity(i);
             this.finish();
-
             Toast.makeText(getApplicationContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
         } else {
