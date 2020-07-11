@@ -97,9 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto_light"
-                android:text="this way, only people you share this
-    password with can join!"
+                android:fontFamily="@font/poppins_light"
+                android:text="this way, only people you share this password with can join!"
                 android:textColor="#3F3D56"
                 android:textSize="36px"
                 android:textStyle="bold" />
