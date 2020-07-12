@@ -80,6 +80,15 @@ public class FamilyFragment extends Fragment {
                               // creates view for each member
                               layoutInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                               View myview = layoutInflater.inflate(R.layout.familymembercard, null, false);
+                              //add an onclick listener
+                              myview.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View view) {
+                                      Intent intent = new Intent(FamilyFragment.this, FamilyMemberProfile.class);
+                                      startActivity(intent);
+                                  }
+                              });
+
                               TextView name = myview.findViewById(R.id.name_tv);
                               TextView pts = myview.findViewById(R.id.points_tv);
                               name.setText(m.getName());
