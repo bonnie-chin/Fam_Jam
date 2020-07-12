@@ -132,7 +132,6 @@
                             android:textColor="#808080"
                             android:textSize="32px"
                             android:fontFamily="@font/roboto_bold"
-                            android:text="+ Grace"
                             />
                     </LinearLayout>
                 </LinearLayout>

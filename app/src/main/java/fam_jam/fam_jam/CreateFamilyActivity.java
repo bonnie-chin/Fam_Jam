@@ -96,7 +96,7 @@ public class CreateFamilyActivity extends AppCompatActivity {
                         });
 
                 famId = fId;
-                AlarmReceiver.endWeek();
+//                AlarmReceiver.endWeek();
                 Intent i = new Intent(CreateFamilyActivity.this, MainActivity.class);
                 CreateFamilyActivity.this.startActivity(i);
                 CreateFamilyActivity.this.finish();

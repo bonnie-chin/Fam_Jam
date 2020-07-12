@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                                     new AuthUI.IdpConfig.GoogleBuilder().build(),
                                     new AuthUI.IdpConfig.EmailBuilder().build()))
                             .setTosAndPrivacyPolicyUrls(
-                                    "https://firebase.google.com/docs/android/setup#available-libraries",
-                                    "https://firebase.google.com/docs/android/setup#available-libraries")
+                                    "https://devpost.com/software/famjam-ytn3bv",
+                                    "https://devpost.com/software/famjam-ytn3bv")
                             .build(),
                     RC_SIGN_IN);
         }
