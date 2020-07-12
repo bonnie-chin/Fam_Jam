@@ -263,7 +263,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="3"
                                 android:textColor="#384862"
                                 android:textSize="72px" />
 
@@ -274,7 +273,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="months"
+                            android:text="weeks"
                             android:textColor="#384862"
                             android:textSize="36px" />
                     </LinearLayout>

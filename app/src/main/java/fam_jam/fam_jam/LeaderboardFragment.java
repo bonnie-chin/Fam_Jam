@@ -47,21 +47,24 @@ public class LeaderboardFragment extends Fragment {
 
                     String m = (String) s.getValue();
                     fireRef.child("members").child(m).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                                                         @Override
-                                                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                                             Member m = snapshot.getValue(Member.class);
-                                                                                             // creates view for each member
-                                                                                             layoutInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                                                                             View myview = layoutInflater.inflate(R.layout.leaderboardcard, null, false);
-                                                                                             TextView name = myview.findViewById(R.id.name_tv);
-                                                                                             name.setText(m.getName());
-                                                                                             leaders.addView(myview);
-                                                                                         }
-                                                                                         @Override
-                                                                                         public void onCancelled(@NonNull DatabaseError databaseError) {
+                         @Override
+                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                             Member m = snapshot.getValue(Member.class);
+                             // creates view for each member
+                             layoutInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                             View myview = layoutInflater.inflate(R.layout.leaderboardcard, null, false);
+                             TextView name = myview.findViewById(R.id.name_tv);
+                             TextView pts = myview.findViewById(R.id.score_tv);
+                             name.setText(m.getName());
+                             String ranking = m.getPoints() + " pts";
+                             pts.setText(ranking);
+                             leaders.addView(myview);
+                         }
+                         @Override
+                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                                                                         }
-                                                                                     }
+                         }
+                     }
                     );
                     i++;
                     if (i>=4){

@@ -48,6 +48,8 @@ public class FamilyFragment extends Fragment {
                 Family f = dataSnapshot.getValue(Family.class);
                 famNameTv.setText(f.getCode());
                 passcodeTv.setText(f.getPassword());
+                int weeksAgo = f.secAgo() / (60*60*24*7);
+                famHistory.setText(String.valueOf(weeksAgo));
             }
 
             @Override
