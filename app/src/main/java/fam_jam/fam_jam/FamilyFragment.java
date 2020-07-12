@@ -92,7 +92,7 @@ public class FamilyFragment extends Fragment {
                                   }
                               });
                               ImageView iconImg = myview.findViewById(R.id.profile_icon);
-                              if (iconImg!=null){
+                              if (m!= null && iconImg!=null){
                                   Picasso.get().load(m.getImgUrl()).into(iconImg);
                               }
 

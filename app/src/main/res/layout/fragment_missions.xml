@@ -137,7 +137,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Current Missions"
+            android:text="Your Missions"
             android:textColor="#384862"
             android:textSize="72px"
             android:textStyle="bold" />
