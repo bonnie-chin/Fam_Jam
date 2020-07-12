@@ -156,9 +156,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 break;
             case 1:
                 header += "COMPLETED";
+
                 break;
             case 2:
                 header += "MISSED";
+                holder.doneButton.setBackgroundResource(R.drawable.incompletemissiongrey);
+
                 break;
         }
         holder.timeTopTv.setText(header);

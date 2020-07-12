@@ -18,7 +18,7 @@
     </style>
 
     <style name="SpinnerTheme">
-        <item name="android:textColor">#FEF5EF</item>
+        <item name="android:textColor">#6B9D97</item>
         <item name="android:textSize">14dp</item>
         <item name="android:fontFamily">@font/poppins</item>
     </style>
