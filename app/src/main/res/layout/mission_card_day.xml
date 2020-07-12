@@ -72,8 +72,8 @@
                         android:fontFamily="@font/poppins_semibold"/>
                     <android.support.v7.widget.CardView
                         android:id="@+id/top_card"
-                        android:layout_width="150px"
-                        android:layout_height="62px"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
                         android:layout_marginTop = "20dp"
                         android:layout_marginLeft="-50dp"
                         app:cardBackgroundColor="#8D8D8D"
@@ -88,7 +88,7 @@
                             android:layout_marginRight="3dp"
                             android:layout_marginTop="10px"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="+30pts"
+                            android:text="+30"
                             android:gravity="center"
                             android:textColor="#FEF5EF"
                             android:textSize="30px"
