@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import fam_jam.fam_jam.model.Family;
 import fam_jam.fam_jam.model.Member;
 
+import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.LoginActivity.user;
 
 public class CreateFamilyActivity extends AppCompatActivity {
@@ -64,7 +65,6 @@ public class CreateFamilyActivity extends AppCompatActivity {
                                 // successfully saved
                                 Toast.makeText(getApplicationContext(),"Your family has been created!",Toast.LENGTH_SHORT).show();
                                 finish();
-
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -95,6 +95,8 @@ public class CreateFamilyActivity extends AppCompatActivity {
                             }
                         });
 
+                famId = fId;
+                AlarmReceiver.endWeek();
                 Intent i = new Intent(CreateFamilyActivity.this, MainActivity.class);
                 CreateFamilyActivity.this.startActivity(i);
                 CreateFamilyActivity.this.finish();

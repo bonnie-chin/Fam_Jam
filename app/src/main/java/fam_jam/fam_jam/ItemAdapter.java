@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import fam_jam.fam_jam.model.Member;
 import fam_jam.fam_jam.model.Mission;
 import fam_jam.fam_jam.model.MissionTemplate;
 
@@ -86,15 +87,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     // replaces the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+
         final Mission m = missionList.get(position);
         final int status = m.getStatus();
         final int type = m.getType();
 
-        // mission template
+        // retrieves info from mission template
         fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(String.valueOf(m.gettId())).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MissionTemplate t = dataSnapshot.getValue(MissionTemplate.class);
+
                 holder.titleTv.setText(t.getTitle());
                 String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
@@ -105,25 +108,36 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 }
                 mPoints = t.getPoints();
 
+                if (m.getWith()!=null && !m.getWith().equals(user.getUid())){
+                    fireRef.child("members").child(m.getWith()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Member mem = dataSnapshot.getValue(Member.class);
+                            String and = "+ " + mem.getName();
+                            holder.andTv.setText(and);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
                 // card header
-                String and ="";
                 String header = "";
                 switch (type){
                     case 3:
                         header = "WEEK  |  ";
-                        and = "+ bonnie";
                         break;
                     case 1:
                         header = "DAY  |  ";
-                        and = "+ judy";
                         break;
                     case 2:
                         header = "NOW  |  ";
-                        and = "+ grace";
                         break;
                 }
-                holder.andTv.setText(and);
 
+                // changes colours / styling
                 switch (status){
                     case 0:
                         header += m.getStringTimeLeft((long)m.getTimeCreated());
@@ -135,8 +149,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                             holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
                             holder.andTv.setTextColor(Color.parseColor("#E2978D"));
                             holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
-                            // set styling for right now
-                            // holder.timeTopTv.setTextColor();
                         } else if (type==2) {
                             holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
                             holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
@@ -151,37 +163,49 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                             holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
                             break;
                         }
+                        // card button
+                        holder.doneButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new AlertDialog.Builder(main)
+                                        .setTitle("Mark complete")
+                                        .setMessage("Did you complete the mission?")
+                                        .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
+                                                int newPoints = mPoints + member.getPoints();
+                                                fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);
+                                            }
+                                        })
+                                        .setNegativeButton("Cancel", null)
+                                        .show();
+                            }
+                        });
                         break;
                     case 1:
                         header += "COMPLETED";
                         holder.doneButton.setText("");
+                        holder.doneButton.setOnClickListener(null);
+                        holder.doneButton.setBackgroundResource(R.drawable.completemissiongrey);
+                        holder.timeTopTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.titleTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.andTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.cardBack.setBackgroundResource(R.drawable.missioncardgrey);
+
                         break;
                     case 2:
                         header += "MISSED";
                         holder.doneButton.setText("");
+                        holder.doneButton.setOnClickListener(null);
                         holder.doneButton.setBackgroundResource(R.drawable.incompletemissiongrey);
+                        holder.doneButton.setBackgroundResource(R.drawable.completemissiongrey);
+                        holder.timeTopTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.titleTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.andTv.setTextColor(Color.parseColor("#8D8D8D"));
+                        holder.cardBack.setBackgroundResource(R.drawable.missioncardgrey);
                         break;
                 }
                 holder.timeTopTv.setText(header);
-
-                // card button
-                holder.doneButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new AlertDialog.Builder(main)
-                                .setTitle("Mark complete")
-                                .setMessage("Did you complete the mission?")
-                                .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
-                                        int newPoints = mPoints + member.getPoints();
-                                        fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);
-                                    }
-                                })
-                                .setNegativeButton("Cancel", null)
-                                .show();
-                    }
-                });
 
             }
 

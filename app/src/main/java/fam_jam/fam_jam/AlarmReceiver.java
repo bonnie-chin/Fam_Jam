@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -48,22 +49,22 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Sets the scheduled task for midnight
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
+        cal.clear(Calendar.MINUTE);
+        cal.clear(Calendar.SECOND);
+        cal.clear(Calendar.MILLISECOND);
+        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
 
         // Sets the time and interval
-        long midnight = calendar.getTimeInMillis();
+        long start = cal.getTimeInMillis();
         long interval = 7*AlarmManager.INTERVAL_DAY;
 
         // Starts the AlarmManager service to repeat at midnight every week
         AlarmManager am = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         am.setInexactRepeating(
                 AlarmManager.RTC,
-                midnight,
+                start,
                 interval,
                 pendingIntent);
     }
@@ -71,73 +72,110 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static void endWeek(){
 
         final DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
-
-
-        fireRef.child("members").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               Member m = dataSnapshot.getValue(Member.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-        // Firebase
         final DatabaseReference famRef = fireRef.child("families").child(famId);
-        famRef.child("members").addListenerForSingleValueEvent(new ValueEventListener() {
+
+        // Sets the scheduled task for midnight
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
+        cal.clear(Calendar.MINUTE);
+        cal.clear(Calendar.SECOND);
+        cal.clear(Calendar.MILLISECOND);
+        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+
+        // Sets the time and interval
+        final long weekStart = cal.getTimeInMillis();
+
+
+        fireRef.child("families").child(famId).child("members").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot s : dataSnapshot.getChildren()) {
-
-//                    // makes daily missions
-//                    for (int i=0; i<7; i++){
-//                        int rand = (int)Math.floor(Math.random()*3);
-//                        String d = famRef.child("missions").push().getKey();
-//                        Mission m = new Mission(d, rand, 2);
-//                        // adds mission
-//                        famRef.child("missions").child(d).setValue(m);
-//
-//                        // TODO - add in time
-//                    }
+                final ArrayList<String> members = new ArrayList<String>();
+                for (DataSnapshot s : dataSnapshot.getChildren()){
+                    String member = (String)s.getValue();
+                    members.add(member);
                 }
+
+                // makes daily missions
+                for (int i=0; i<7; i++){
+                    final int rand = (int)Math.floor(Math.random()*5+1);
+                    final int type = 2;
+                    DatabaseReference templateRef = fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(rand));
+                    final int finalI = i;
+                    templateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
+                            long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
+                            long start = weekStart + (finalI *24*3600*1000);
+                            long end = duration + start;
+                            String d = famRef.child("missions").push().getKey();
+                            Mission m = new Mission(d, user.getUid(), rand, type, start, end);
+                            int pos = (int)Math.floor(Math.random()*(members.size()));
+                            m.setWith(members.get(pos));
+                            // adds mission
+                            famRef.child("missions").child(d).setValue(m);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
+
+                // makes random daily missions
+                for (int i=0; i<7; i++){
+                    final int rand = (int)Math.floor(Math.random()*5+1);
+                    final int type = 1;
+                    DatabaseReference templateRef = fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(rand));
+                    final int finalI = i;
+                    templateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
+                            long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
+                            // sets a random start time
+                            long start = weekStart + (finalI *24*3600*1000) + (int)Math.floor(Math.random()*3600*24*50);
+                            long end = duration + start;
+                            String d = famRef.child("missions").push().getKey();
+                            Mission m = new Mission(d, user.getUid(), rand, type, start, end);
+                            int pos = (int)Math.floor(Math.random()*(members.size()));
+                            m.setWith(members.get(pos));
+                            // adds mission
+                            famRef.child("missions").child(d).setValue(m);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
+
+                // weekly mission
+                final int rand = (int)Math.floor(Math.random()*5+1);
+                final int type = 3;
+                DatabaseReference templateRef = fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(rand));
+                templateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
+                        long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
+                        long start = weekStart;
+                        long end = duration + start;
+                        String d = famRef.child("missions").push().getKey();
+                        Mission m = new Mission(d, user.getUid(), rand, type, start, end);
+                        int pos = (int)Math.floor(Math.random()*(members.size()));
+                        m.setWith(members.get(pos));
+                        // adds mission
+                        famRef.child("missions").child(d).setValue(m);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
-        // makes daily missions
-        for (int i=0; i<7; i++){
-
-            // int rand = (int)Math.floor(Math.random()*3);
-            final int rand = 1;
-            final int type = 3;
-            DatabaseReference templateRef = fireRef.child("mission_templates").child(String.valueOf(type)).child(String.valueOf(rand));
-            templateRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    MissionTemplate mT = dataSnapshot.getValue(MissionTemplate.class);
-                    long duration = mT.getTimeAllotted() * 1000 * 60 * 60;
-                    long start = System.currentTimeMillis() + (3600*1000*2);
-                    long end = duration + start;
-
-                    String d = famRef.child("missions").push().getKey();
-                    Mission m = new Mission(d, member.getuId(), rand, type, start, end);
-                    // adds mission
-                    famRef.child("missions").child(d).setValue(m);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-
-            // TODO - add in time
-        }
-
-        // TODO - weekly missions by admin maybe
 
     }
 }

@@ -57,17 +57,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 member = dataSnapshot.getValue(Member.class);
                 LoginActivity.famId = member.getFamId();
                 mission.getMissions();
-//                AlarmReceiver.endWeek();
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
-
         });
 
         // Schedules a reset every week at midnight using AlarmReceiver class method
+
         AlarmReceiver.setReset(this);
     }
 

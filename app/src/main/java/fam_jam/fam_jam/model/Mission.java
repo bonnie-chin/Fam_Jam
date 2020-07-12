@@ -16,7 +16,7 @@ import static fam_jam.fam_jam.MainActivity.fireRef;
 
 public class Mission implements Comparable<Mission>{
 
-    private String id, member;
+    private String id, member, with;
     private int status, type, tId;
     private long timeCreated, startTime, endTime;
 
@@ -136,5 +136,24 @@ public class Mission implements Comparable<Mission>{
 
     public void setMember(String member) {
         this.member = member;
+    }
+
+    public boolean isActive(){
+        if (startTime > System.currentTimeMillis()) {
+            return false;
+        } else if (endTime < System.currentTimeMillis()){
+            status = 2; // TODO - save in database
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public String getWith() {
+        return with;
+    }
+
+    public void setWith(String with) {
+        this.with = with;
     }
 }
