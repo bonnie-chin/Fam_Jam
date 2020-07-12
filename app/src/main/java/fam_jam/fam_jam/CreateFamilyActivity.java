@@ -76,7 +76,8 @@ public class CreateFamilyActivity extends AppCompatActivity {
                         });
                 famRef.child(fId).child("members").push().setValue(user.getUid());
 
-                Member u = new Member(user.getUid(), nickname, fId);
+                String photo = user.getPhotoUrl().toString();
+                Member u = new Member(user.getUid(), nickname, fId, photo);
                 // adds to firebase
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
 

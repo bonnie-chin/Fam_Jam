@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -55,6 +57,10 @@ public class LeaderboardFragment extends Fragment {
                              View myview = layoutInflater.inflate(R.layout.leaderboardcard, null, false);
                              TextView name = myview.findViewById(R.id.name_tv);
                              TextView pts = myview.findViewById(R.id.score_tv);
+                             ImageView iconImg = myview.findViewById(R.id.leader_icon);
+                             if (iconImg!=null){
+                                 Picasso.get().load(m.getImgUrl()).into(iconImg);
+                             }
                              name.setText(m.getName());
                              String ranking = m.getPoints() + " pts";
                              pts.setText(ranking);

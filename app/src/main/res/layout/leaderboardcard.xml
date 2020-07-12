@@ -11,6 +11,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp">
         <ImageView
+            android:id="@+id/leader_icon"
             android:layout_width="70px"
             android:layout_height="70px"
             android:src="@drawable/womanone"

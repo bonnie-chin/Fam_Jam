@@ -70,7 +70,7 @@ public class JoinFamilyActivity extends AppCompatActivity {
                         famRef = fireRef.child("families").child(f.getfId());
 
                         if (password.equals(f.getPassword())){
-                            Member u = new Member(user.getUid(), finalNickname, f.getfId());
+                            Member u = new Member(user.getUid(), finalNickname, f.getfId(), user.getPhotoUrl().toString());
                             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
                             userRef.child(user.getUid()).setValue(u)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {

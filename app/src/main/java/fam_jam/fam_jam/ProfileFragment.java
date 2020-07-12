@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
 
     private Button logoutButton;
-    public ImageView imageView;
+    private ImageView pfp;
+    private TextView
 
     @Nullable
     @Override
@@ -31,31 +33,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-
-        /*URL url = new URL("http://image10.bizrate-images.com/resize?sq=60&uid=2216744464");
-        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-
-        urlTest.setImageBitmap(bmp); */
-
-        /*InputStream is = null;
-        try {
-            is = (InputStream) new URL("https://external-preview.redd.it/KgNuAcsy0x59BmJu_dnEKaNPrP309fLkKYWxIOa0wBo.png?auto=webp&s=886ccb8afdf7abb69118293234ebcd995c3808e2").getContent();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Drawable d = Drawable.createFromStream(is, "ihatelife");
-
-
-
-        urlTest.setBackground(d);*/
-        imageView = v.findViewById(R.id.urltest);
-        String potato = "https://external-preview.redd.it/KgNuAcsy0x59BmJu_dnEKaNPrP309fLkKYWxIOa0wBo.png?auto=webp&s=886ccb8afdf7abb69118293234ebcd995c3808e2";
-        Picasso.get().load(potato).into(imageView);
         return v;
-
-
     }
+
 
 }
 

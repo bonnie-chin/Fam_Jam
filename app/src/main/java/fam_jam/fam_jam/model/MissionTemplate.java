@@ -1,16 +1,11 @@
 package fam_jam.fam_jam.model;
 
-import android.support.annotation.NonNull;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MissionTemplate {
 
-    private String title, description, imgUrl;
+    private String title, description, activeUrl, inactiveUrl;
     private long timeAllotted;
     private int id, points;
 
@@ -39,12 +34,12 @@ public class MissionTemplate {
         this.timeAllotted = timeAllotted;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getActiveUrl() {
+        return activeUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setActiveUrl(String activeUrl) {
+        this.activeUrl = activeUrl;
     }
 
     public String getDescription() {
@@ -70,5 +65,13 @@ public class MissionTemplate {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getInactiveUrl() {
+        return inactiveUrl;
+    }
+
+    public void setInactiveUrl(String inactiveUrl) {
+        this.inactiveUrl = inactiveUrl;
     }
 }

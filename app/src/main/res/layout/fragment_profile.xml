@@ -25,6 +25,7 @@
             android:paddingHorizontal="30dp"
             android:paddingTop="30dp">
             <ImageView
+                android:id="@+id/profile_pfp"
                 android:layout_width="133dp"
                 android:layout_height="187dp"
                 android:src="@drawable/personprofilepicture"/>
@@ -35,10 +36,10 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginVertical="20dp">
                 <TextView
+                    android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Bonnie"
                     android:textColor="#FEF5EF"
                     android:textSize="72px"/>
                 <LinearLayout
@@ -89,13 +90,13 @@
                     app:cardCornerRadius="3dp">
 
                     <TextView
+                        android:id="@+id/profile_pts"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="5dp"
-                        android:text="362 pts"
                         android:fontFamily="@font/poppins_medium"
                         android:textColor="#FEF5EF"
                         android:textSize="28px" />

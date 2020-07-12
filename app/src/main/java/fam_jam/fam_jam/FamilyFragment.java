@@ -2,6 +2,7 @@ package fam_jam.fam_jam;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +11,14 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.EventListener;
 
@@ -88,6 +91,10 @@ public class FamilyFragment extends Fragment {
                                       getActivity().startActivity(intent);
                                   }
                               });
+                              ImageView iconImg = myview.findViewById(R.id.profile_icon);
+                              if (iconImg!=null){
+                                  Picasso.get().load(m.getImgUrl()).into(iconImg);
+                              }
 
                               TextView name = myview.findViewById(R.id.name_tv);
                               TextView pts = myview.findViewById(R.id.points_tv);

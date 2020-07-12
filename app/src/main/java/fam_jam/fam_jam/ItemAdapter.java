@@ -3,11 +3,9 @@ package fam_jam.fam_jam;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +26,6 @@ import java.util.List;
 import fam_jam.fam_jam.model.Mission;
 import fam_jam.fam_jam.model.MissionTemplate;
 
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
-import static fam_jam.fam_jam.JoinFamilyActivity.famRef;
 import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.LoginActivity.user;
 import static fam_jam.fam_jam.MainActivity.member;
@@ -99,7 +95,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 holder.titleTv.setText(t.getTitle());
                 String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
-                Picasso.get().load(t.getImgUrl()).into(holder.iconImg);
+                if (m.getStatus()==1) {
+                    Picasso.get().load(t.getActiveUrl()).into(holder.iconImg);
+                } else {
+                    Picasso.get().load(t.getInactiveUrl()).into(holder.iconImg);
+                }
                 mPoints = t.getPoints();
             }
 

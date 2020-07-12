@@ -2,17 +2,18 @@ package fam_jam.fam_jam.model;
 
 public class Member {
 
-    private String uId, name, email, famId;
+    private String uId, name, imgUrl, famId;
     private String[] members;
     private int points;
 
     public Member(){}
 
-    public Member(String userId, String userName, String fId){
+    public Member(String userId, String userName, String fId, String photo){
         this.uId = userId;
         this.name = userName;
         this.famId = fId;
         this.points = 0;
+        this.imgUrl = photo;
     }
 
     public String getuId() {
@@ -31,12 +32,12 @@ public class Member {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String[] getMembers() {
