@@ -125,8 +125,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         switch (m.getStatus()){
             case 0:
                 header += m.getStringTimeLeft((long)m.getTimeCreated());
-                // changes look based on active status and type
-                // TODO - change colors here
                 holder.pointsCard.setCardBackgroundColor(Color.parseColor("#FAC16B"));
 
                  switch (m.getType()){
@@ -156,12 +154,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 break;
             case 1:
                 header += "COMPLETED";
-
+                holder.doneButton.setText("");
                 break;
             case 2:
                 header += "MISSED";
+                holder.doneButton.setText("");
                 holder.doneButton.setBackgroundResource(R.drawable.incompletemissiongrey);
-
                 break;
         }
         holder.timeTopTv.setText(header);

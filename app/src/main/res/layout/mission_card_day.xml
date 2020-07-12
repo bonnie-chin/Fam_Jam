@@ -116,24 +116,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="20dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:layout_marginBottom="5dp"
                             android:textColor="#8D8D8D"
                             android:textFontWeight="500"
                             android:fontFamily="@font/roboto_bold"
                             android:textSize="48px"
                             android:text="Give a Hug"/>
-                        <TextView
-                            android:id="@+id/card_sender"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:textColor="#808080"
-                            android:textSize="32px"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="to Grace"
-                            />
+<!--                        <TextView-->
+<!--                            android:id="@+id/card_sender"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginHorizontal="20dp"-->
+<!--                            android:layout_marginBottom="10dp"-->
+<!--                            android:textColor="#808080"-->
+<!--                            android:textSize="32px"-->
+<!--                            android:fontFamily="@font/roboto_bold"-->
+<!--                            android:text="to Grace"-->
+<!--                            />-->
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
