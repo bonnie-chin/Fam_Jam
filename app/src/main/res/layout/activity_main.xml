@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:itemTextColor="#FEF5EF"
+        app:itemTextColor="#6B8B9D"
         app:itemIconTint="#6B8B9D"
         app:menu="@menu/navigation"
         />
