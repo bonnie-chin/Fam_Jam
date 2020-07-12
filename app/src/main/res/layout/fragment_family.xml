@@ -32,7 +32,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Family Mission"
+                android:text="Family Page"
                 android:textColor="#FEF5EF"
                 android:textSize="72px"
                 android:textStyle="bold" />
