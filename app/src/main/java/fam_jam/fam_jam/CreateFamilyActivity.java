@@ -76,11 +76,11 @@ public class CreateFamilyActivity extends AppCompatActivity {
                         });
                 famRef.child(fId).child("members").push().setValue(user.getUid());
 
+                // creates new user
                 String photo = user.getPhotoUrl().toString();
                 Member u = new Member(user.getUid(), nickname, fId, photo);
-                // adds to firebase
+                // adds user to firebase
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("members");
-
                 userRef.child(user.getUid()).setValue(u)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -96,7 +96,8 @@ public class CreateFamilyActivity extends AppCompatActivity {
                         });
 
                 famId = fId;
-//                AlarmReceiver.endWeek();
+
+                // starts main activity
                 Intent i = new Intent(CreateFamilyActivity.this, MainActivity.class);
                 CreateFamilyActivity.this.startActivity(i);
                 CreateFamilyActivity.this.finish();

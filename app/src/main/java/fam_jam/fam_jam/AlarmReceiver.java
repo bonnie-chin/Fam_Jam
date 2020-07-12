@@ -29,26 +29,22 @@ import fam_jam.fam_jam.model.MissionTemplate;
 import static android.content.Context.ALARM_SERVICE;
 import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.LoginActivity.user;
-import static fam_jam.fam_jam.MainActivity.fireRef;
-import static fam_jam.fam_jam.MainActivity.member;
 
-// Custom class to schedule a water reset at midnight
 public class AlarmReceiver extends BroadcastReceiver {
 
-    // Called when the AlarmReceiver reaches the scheduled time
+    // called when the AlarmReceiver reaches the scheduled time
     @Override
     public void onReceive(Context context, Intent i) {
         endWeek();
     }
 
-    // Class method that schedules a reset at midnight everyday
     public static void setReset(Context context){
 
         // Intent to execute
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // Sets the scheduled task for midnight
+        // Sets the scheduled task for start of week
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
         cal.clear(Calendar.MINUTE);
@@ -74,18 +70,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         final DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
         final DatabaseReference famRef = fireRef.child("families").child(famId);
 
-        // Sets the scheduled task for midnight
+        // finds start of week
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !
+        cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.clear(Calendar.MINUTE);
         cal.clear(Calendar.SECOND);
         cal.clear(Calendar.MILLISECOND);
         cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
-
-        // Sets the time and interval
         final long weekStart = cal.getTimeInMillis();
 
-
+        // finds other members in family
         fireRef.child("families").child(famId).child("members").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

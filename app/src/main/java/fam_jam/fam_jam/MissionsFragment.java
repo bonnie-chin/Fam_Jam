@@ -47,8 +47,6 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     private FusedLocationProviderClient fusedLocationClient;
     private MainActivity main;
 
-
-
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
@@ -67,13 +65,8 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(main);
         recyclerView.setLayoutManager(layoutManager);
-
-        // msgView = view.findViewById(R.id.no_new_requests);
-
         mAdapter = new ItemAdapter(missions, main);
         recyclerView.setAdapter(mAdapter);
-
-        main.setUpNotifs();
 
         if (famId!=null){
             getMissions();
@@ -99,7 +92,7 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                     }
                 }
 
-                // sorts data
+                // sorts missions based on time, status
                  Collections.sort(missions);
 
                 // refreshes recycler view

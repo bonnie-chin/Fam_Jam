@@ -76,7 +76,6 @@ public class ProfileFragment extends Fragment {
         pfp = v.findViewById(R.id.profile_pfp);
         String url = member.getImgUrl();
         if (url!=null){
-//            Picasso.get().load(member.getImgUrl()).transform(new CropCircleTransformation()).into(pfp);
             Picasso.get().load(member.getImgUrl()).transform(new CircleTransform()).into(pfp);
         }
 

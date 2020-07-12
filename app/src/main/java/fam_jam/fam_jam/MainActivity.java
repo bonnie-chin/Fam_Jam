@@ -31,9 +31,7 @@ import static fam_jam.fam_jam.LoginActivity.user;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    // views
     final static String TAG = MainActivity.class.getSimpleName();
-    private ArrayList<String> missions;
 
     // Firebase
     public static DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
@@ -45,12 +43,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // sets up nav bar and fragments
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
-
         final MissionsFragment mission = new MissionsFragment();
         loadFragment(mission);
 
+        // finds family of user
         fireRef.child("members").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -65,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
 
-        // Schedules a reset every week at midnight using AlarmReceiver class method
-
+        // generates new missions every week
         AlarmReceiver.setReset(this);
     }
 
@@ -102,10 +100,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return loadFragment(fragment);
     }
 
-    private void generateMission(){
-
-    }
-
     // set up listener for when data changed --> sends relevant notifications to user
     public void setUpNotifs(){
         DatabaseReference requestRef = fireRef.child("requests");
@@ -125,46 +119,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
     }
-
-    private void addNotification(String title, String message) {
-
-        // builds notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "CODERED")
-//                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setColor(getResources().getColor(R.color.colorPrimary))
-                .setContentTitle(title)
-                .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setDefaults(Notification.DEFAULT_ALL)
-                .setAutoCancel(true);
-
-        // creates the intent needed to show the notification
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("message", message);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingIntent);
-
-        // add as notification
-        NotificationManager notificationManager = (NotificationManager)getSystemService(
-                Context.NOTIFICATION_SERVICE
-        );
-        notificationManager.notify(0,builder.build());
-
-    }
-    private void createNotificationChannel() {
-        // create the NotificationChannel, but only on API 26+ because the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "codeREDchannel";
-            String description = "Channel for codeRED notifications";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("CODERED", name, importance);
-            channel.setDescription(description);
-            // register the channel with the system; you can't change the importance or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
-
 
 }

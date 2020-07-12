@@ -123,7 +123,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                     });
                 }
 
-                // card header
+                // card header depending on type
                 String header = "";
                 switch (type){
                     case 3:
@@ -137,7 +137,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                         break;
                 }
 
-                // changes colours / styling
+                // changes colours / styling for each card
                 switch (status){
                     case 0:
                         header += m.getStringTimeLeft((long)m.getTimeCreated());
@@ -161,9 +161,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                             holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
                             holder.andTv.setTextColor(Color.parseColor("#6B8B9D"));
                             holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
-                            break;
                         }
-                        // card button
+
+                        // alert dialog when mission is completed
                         holder.doneButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -172,6 +172,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                                         .setMessage("Did you complete the mission?")
                                         .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
+                                                // saves status in database
                                                 fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
                                                 int newPoints = mPoints + member.getPoints();
                                                 fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);

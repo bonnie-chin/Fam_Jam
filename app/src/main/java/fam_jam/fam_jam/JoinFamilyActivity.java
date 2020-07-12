@@ -59,7 +59,6 @@ public class JoinFamilyActivity extends AppCompatActivity {
                 final String password = passwordET.getText().toString();
 
                 // gets the generated id from firebase
-
                 Query q = fireRef.child("families").orderByChild("code").equalTo(family);
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
