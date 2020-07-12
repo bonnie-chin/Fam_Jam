@@ -28,9 +28,6 @@ public class FamilyMemberProfile extends AppCompatActivity {
         // sets views with member info
         nameTv = findViewById(R.id.member_name);
         nameTv.setText(member.getName());
-//        ptsTv = findViewById(R.id.profile_pts);
-//        String pts = member.getPoints() + " pts";
-//        ptsTv.setText(pts);
         pfp = findViewById(R.id.member_pfp);
         String url = member.getImgUrl();
         if (url!=null){
