@@ -84,8 +84,8 @@ public class FamilyFragment extends Fragment {
                               myview.setOnClickListener(new View.OnClickListener() {
                                   @Override
                                   public void onClick(View view) {
-                                      Intent intent = new Intent(FamilyFragment.this, FamilyMemberProfile.class);
-                                      startActivity(intent);
+                                      Intent intent = new Intent(getActivity(), FamilyMemberProfile.class);
+                                      getActivity().startActivity(intent);
                                   }
                               });
 
