@@ -79,7 +79,7 @@ public class FamilyFragment extends Fragment {
                     fireRef.child("members").child(m).addListenerForSingleValueEvent(new ValueEventListener() {
                           @Override
                           public void onDataChange(@NonNull DataSnapshot snapshot) {
-                              Member m = snapshot.getValue(Member.class);
+                              final Member m = snapshot.getValue(Member.class);
                               // creates view for each member
                               layoutInflater = (LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                               View myview = layoutInflater.inflate(R.layout.familymembercard, null, false);
@@ -88,6 +88,7 @@ public class FamilyFragment extends Fragment {
                                   @Override
                                   public void onClick(View view) {
                                       Intent intent = new Intent(getActivity(), FamilyMemberProfile.class);
+                                      intent.putExtra("UID", m.getuId());
                                       getActivity().startActivity(intent);
                                   }
                               });

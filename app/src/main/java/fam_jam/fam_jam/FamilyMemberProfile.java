@@ -10,8 +10,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import fam_jam.fam_jam.model.Member;
+
+import static fam_jam.fam_jam.LoginActivity.famId;
+import static fam_jam.fam_jam.MainActivity.fireRef;
 import static fam_jam.fam_jam.MainActivity.member;
 
 public class FamilyMemberProfile extends AppCompatActivity {
@@ -25,15 +33,30 @@ public class FamilyMemberProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familymemberprofile);
 
-        // sets views with member info
-        nameTv = findViewById(R.id.member_name);
-        nameTv.setText(member.getName());
-        pfp = findViewById(R.id.member_pfp);
-        String url = member.getImgUrl();
-        if (url!=null){
-//            Picasso.get().load(member.getImgUrl()).transform(new CropCircleTransformation()).into(pfp);
-            Picasso.get().load(member.getImgUrl()).into(pfp);
-        }
+        Bundle extras = getIntent().getExtras();
+        String id = extras.getString("UID");
+
+        fireRef.child("members").child(id).addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                 Member m = dataSnapshot.getValue(Member.class);
+                 // sets views with member info
+                 nameTv = findViewById(R.id.member_name);
+                 nameTv.setText(m.getName());
+                 pfp = findViewById(R.id.member_pfp);
+                 String url = m.getImgUrl();
+                 if (url!=null){
+                     Picasso.get().load(m.getImgUrl()).into(pfp);
+                 }
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+             }
+         });
+
+
 
     }
 }
