@@ -17,7 +17,7 @@ public class ProfileFragment extends Fragment {
 
     private Button logoutButton;
     private ImageView pfp;
-    private TextView
+    private TextView nameTv, ptsTv;
 
     @Nullable
     @Override
