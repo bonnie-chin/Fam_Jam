@@ -352,7 +352,7 @@
                     app:cardCornerRadius="5dp">
 
                 <TextView
-                    android:id="@+id/count_tv"
+                    android:id="@+id/membercount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"

@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -89,7 +90,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Mission m = missionList.get(position);
-        int toAdd;
 
         // mission template
         fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(String.valueOf(m.gettId())).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -99,8 +99,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 holder.titleTv.setText(t.getTitle());
                 String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
-                // TODO - fix this later
-//                holder.iconImg.setImageResource(t.getImgUrl());
+                Picasso.get().load(t.getImgUrl()).into(holder.iconImg);
                 mPoints = t.getPoints();
             }
 

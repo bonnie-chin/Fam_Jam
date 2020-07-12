@@ -39,7 +39,6 @@ public class FamilyFragment extends Fragment {
 
         famNameTv = v.findViewById(R.id.family_name_tv);
         passcodeTv = v.findViewById(R.id.passcode_tv);
-        countTv = v.findViewById(R.id.count_tv);
         memberCount = v.findViewById(R.id.membercount);
 
         fireRef.child("families").child(famId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -68,10 +67,8 @@ public class FamilyFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 fam_members.removeAllViews();
-                countTv.setText(String.valueOf(dataSnapshot.getChildrenCount()));
-                int i=0;
+                memberCount.setText(String.valueOf(dataSnapshot.getChildrenCount()));
                 for (DataSnapshot s : dataSnapshot.getChildren()){
-                    i++;
                     String m = (String) s.getValue();
                     fireRef.child("members").child(m).addListenerForSingleValueEvent(new ValueEventListener() {
                           @Override
@@ -93,7 +90,6 @@ public class FamilyFragment extends Fragment {
                       }
                     );
                 }
-                memberCount.setText(String.valueOf(i));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
