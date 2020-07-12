@@ -95,7 +95,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 holder.titleTv.setText(t.getTitle());
                 String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
-                if (m.getStatus()==1) {
+                if (m.getStatus()==0) {
                     Picasso.get().load(t.getActiveUrl()).into(holder.iconImg);
                 } else {
                     Picasso.get().load(t.getInactiveUrl()).into(holder.iconImg);
@@ -115,10 +115,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             case 3:
                 header = "WEEK  |  ";
                 break;
-            case 2:
+            case 1:
                 header = "DAY  |  ";
                 break;
-            case 1:
+            case 2:
                 header = "NOW  |  ";
                 break;
         }
@@ -126,31 +126,26 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             case 0:
                 header += m.getStringTimeLeft((long)m.getTimeCreated());
                 holder.pointsCard.setCardBackgroundColor(Color.parseColor("#FAC16B"));
-
-                 switch (m.getType()){
-                     case 1:
-                         holder.doneButton.setBackgroundResource(R.drawable.completemissionpink);
-                         holder.timeTopTv.setTextColor(Color.parseColor("#E2978D"));
-                         holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
-                         holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
-                         // set styling for right now
-                         // holder.timeTopTv.setTextColor();
-
-                         break;
-                     case 2:
-                         holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
-                         holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
-                         holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
-                         holder.cardBack.setBackgroundResource(R.drawable.missioncardgreen);
-                         break;
-                     case 3:
-                         holder.doneButton.setBackgroundResource(R.drawable.completemissionblue);
-                         holder.timeTopTv.setTextColor(Color.parseColor("#6B8B9D"));
-                         holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
-                         holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
-                         break;
+                holder.doneButton.setText("MARK\nDONE");
+                if (m.getType()==1) {
+                    holder.doneButton.setBackgroundResource(R.drawable.completemissionpink);
+                    holder.timeTopTv.setTextColor(Color.parseColor("#E2978D"));
+                    holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
+                    holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
+                    // set styling for right now
+                    // holder.timeTopTv.setTextColor();
+                } else if (m.getType()==2) {
+                    holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
+                    holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
+                    holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
+                    holder.cardBack.setBackgroundResource(R.drawable.missioncardgreen);
+                } else {
+                     holder.doneButton.setBackgroundResource(R.drawable.completemissionblue);
+                     holder.timeTopTv.setTextColor(Color.parseColor("#6B8B9D"));
+                     holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
+                     holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
+                     break;
                  }
-
                 break;
             case 1:
                 header += "COMPLETED";
@@ -163,8 +158,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 break;
         }
         holder.timeTopTv.setText(header);
-
-
 
         // card button
         holder.doneButton.setOnClickListener(new View.OnClickListener() {
