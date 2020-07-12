@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import static fam_jam.fam_jam.MainActivity.member;
+
 public class ProfileFragment extends Fragment {
 
     private Button logoutButton;
@@ -23,6 +25,18 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, null);
+
+        // sets views with member info
+        nameTv = v.findViewById(R.id.profile_name);
+        nameTv.setText(member.getName());
+        ptsTv = v.findViewById(R.id.profile_pts);
+        String pts = member.getPoints() + " pts";
+        ptsTv.setText(pts);
+        pfp = v.findViewById(R.id.profile_pfp);
+        String url = member.getImgUrl();
+        if (url!=null){
+            Picasso.get().load(member.getImgUrl()).into(pfp);
+        }
 
         // logs out the user
         logoutButton = v.findViewById(R.id.button_logout);
