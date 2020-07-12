@@ -46,22 +46,17 @@
                         android:text="Grace"
                         android:textColor="#FEF5EF"
                         android:textSize="72px"/>
-                    <android.support.v7.widget.CardView
+                    <Button
                         android:layout_width="60dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="-2dp"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="5dp"
-                        app:cardBackgroundColor="#FEF5EF"
-                        app:cardCornerRadius="5dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingVertical="5dp"
-                            android:paddingLeft="13dp"
-                            android:paddingRight="10dp"
-                            android:text="sister"
-                            android:gravity="center_vertical"/>
-                    </android.support.v7.widget.CardView>
+                        android:background="@drawable/whiteoutline"
+                        android:textColor="#FEF5EF"
+                        android:textAllCaps="false"
+                        android:layout_marginBottom="5dp"
+                        android:text="sister"/>
+
                 </LinearLayout>
                 <Spinner
                     android:id="@+id/products_spinner"
@@ -70,7 +65,7 @@
                     android:entries="@array/level_array"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:background="@drawable/level_spinner"
                     android:theme="@style/SpinnerTheme"
