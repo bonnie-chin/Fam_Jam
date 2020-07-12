@@ -67,7 +67,7 @@ public class ProfileFragment extends Fragment {
             }
         }
 
-        // sets views with member info
+        // sets views with member info 
         nameTv = v.findViewById(R.id.profile_name);
         nameTv.setText(member.getName());
         ptsTv = v.findViewById(R.id.profile_pts);
