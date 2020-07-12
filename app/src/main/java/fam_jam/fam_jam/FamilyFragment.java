@@ -24,10 +24,11 @@ import fam_jam.fam_jam.model.Member;
 
 import static fam_jam.fam_jam.LoginActivity.famId;
 import static fam_jam.fam_jam.MainActivity.fireRef;
+import static fam_jam.fam_jam.MainActivity.member;
 
 public class FamilyFragment extends Fragment {
 
-    private TextView famNameTv, passcodeTv, countTv;
+    private TextView famNameTv, passcodeTv, countTv, memberCount;
     LayoutInflater layoutInflater;
     LinearLayout fam_members;
 
@@ -39,6 +40,7 @@ public class FamilyFragment extends Fragment {
         famNameTv = v.findViewById(R.id.family_name_tv);
         passcodeTv = v.findViewById(R.id.passcode_tv);
         countTv = v.findViewById(R.id.count_tv);
+        memberCount = v.findViewById(R.id.membercount);
 
         fireRef.child("families").child(famId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -67,7 +69,9 @@ public class FamilyFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 fam_members.removeAllViews();
                 countTv.setText(String.valueOf(dataSnapshot.getChildrenCount()));
+                int i=0;
                 for (DataSnapshot s : dataSnapshot.getChildren()){
+                    i++;
                     String m = (String) s.getValue();
                     fireRef.child("members").child(m).addListenerForSingleValueEvent(new ValueEventListener() {
                           @Override
@@ -89,6 +93,7 @@ public class FamilyFragment extends Fragment {
                       }
                     );
                 }
+                memberCount.setText(String.valueOf(i));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

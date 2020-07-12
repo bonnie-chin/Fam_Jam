@@ -47,6 +47,8 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     private FusedLocationProviderClient fusedLocationClient;
     private MainActivity main;
 
+
+
     // Firebase
     DatabaseReference fireRef = FirebaseDatabase.getInstance().getReference();
 
