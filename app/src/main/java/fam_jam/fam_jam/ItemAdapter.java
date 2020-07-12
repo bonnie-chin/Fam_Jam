@@ -115,10 +115,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             case 3:
                 header = "WEEK  |  ";
                 break;
-            case 1:
+            case 2:
                 header = "DAY  |  ";
                 break;
-            case 2:
+            case 1:
                 header = "NOW  |  ";
                 break;
         }
