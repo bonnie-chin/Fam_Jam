@@ -42,6 +42,7 @@ public class Mission implements Comparable<Mission>{
         return secDiff;
     }
 
+    // formats how long is left before time ends
     public String getStringTimeLeft(long time){
         long t = getTimeLeft();
         String timeLeft = "";

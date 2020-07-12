@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class Family {
 
-
     private String fId, code, password, adminId;
     private long creationTime;
 
@@ -60,6 +59,7 @@ public class Family {
         this.creationTime = creationTime;
     }
 
+    // finds how long ago the family was created
     public int secAgo(){
         Long diff = new Date().getTime() - creationTime;
         int secDiff = (int) (diff / 1000);
