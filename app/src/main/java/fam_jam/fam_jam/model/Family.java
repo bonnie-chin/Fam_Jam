@@ -2,6 +2,8 @@ package fam_jam.fam_jam.model;
 
 import com.google.firebase.database.ServerValue;
 
+import java.util.Date;
+
 public class Family {
 
 
@@ -56,5 +58,11 @@ public class Family {
 
     public void setCreationTime(long creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public int secAgo(){
+        Long diff = new Date().getTime() - creationTime;
+        int secDiff = (int) (diff / 1000);
+        return secDiff;
     }
 }

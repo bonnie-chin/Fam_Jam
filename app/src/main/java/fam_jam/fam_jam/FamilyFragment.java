@@ -28,7 +28,7 @@ import static fam_jam.fam_jam.MainActivity.member;
 
 public class FamilyFragment extends Fragment {
 
-    private TextView famNameTv, passcodeTv, countTv, memberCount;
+    private TextView famNameTv, passcodeTv, famHistory, memberCount;
     LayoutInflater layoutInflater;
     LinearLayout fam_members;
 
@@ -40,6 +40,7 @@ public class FamilyFragment extends Fragment {
         famNameTv = v.findViewById(R.id.family_name_tv);
         passcodeTv = v.findViewById(R.id.passcode_tv);
         memberCount = v.findViewById(R.id.membercount);
+        famHistory = v.findViewById(R.id.fam_history);
 
         fireRef.child("families").child(famId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
