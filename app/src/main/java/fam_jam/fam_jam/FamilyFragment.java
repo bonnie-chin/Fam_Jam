@@ -137,11 +137,15 @@ public class FamilyFragment extends Fragment {
                               if (iconImg!=null){
                                   Picasso.get().load(m.getImgUrl()).transform(new CircleTransform()).into(iconImg);
                               }
+                              TextView level = myview.findViewById(R.id.level_tv);
+                              String l = "Level " + (int)Math.floor(Math.random()*5);
+                              level.setText(l);
 
                               TextView name = myview.findViewById(R.id.name_tv);
                               TextView pts = myview.findViewById(R.id.points_tv);
                               name.setText(m.getName());
-                              pts.setText(String.valueOf(m.getPoints()));
+                              String p = m.getPoints() + " pts";
+                              pts.setText(p);
                               fam_members.addView(myview);
                           }
                           @Override
