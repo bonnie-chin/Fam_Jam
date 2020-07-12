@@ -101,7 +101,7 @@ public class MissionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                 }
 
                 // sorts data
-                Collections.sort(missions);
+                 Collections.sort(missions);
 
                 // refreshes recycler view
                 mAdapter.notifyDataSetChanged();

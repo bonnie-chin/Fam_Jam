@@ -86,6 +86,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Mission m = missionList.get(position);
+        final int status = m.getStatus();
+        final int type = m.getType();
 
         // mission template
         fireRef.child("mission_templates").child(String.valueOf(m.getType())).child(String.valueOf(m.gettId())).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -95,12 +97,82 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
                 holder.titleTv.setText(t.getTitle());
                 String points = "+ " + t.getPoints();
                 holder.pointsTv.setText(points);
-                if (m.getStatus()==0) {
+                if (status==0) {
                     Picasso.get().load(t.getActiveUrl()).into(holder.iconImg);
                 } else {
                     Picasso.get().load(t.getInactiveUrl()).into(holder.iconImg);
                 }
                 mPoints = t.getPoints();
+
+                // card header
+                String header = "";
+                switch (type){
+                    case 3:
+                        header = "WEEK  |  ";
+                        break;
+                    case 1:
+                        header = "DAY  |  ";
+                        break;
+                    case 2:
+                        header = "NOW  |  ";
+                        break;
+                }
+                switch (status){
+                    case 0:
+                        header += m.getStringTimeLeft((long)m.getTimeCreated());
+                        holder.pointsCard.setCardBackgroundColor(Color.parseColor("#FAC16B"));
+                        holder.doneButton.setText("MARK\nDONE");
+                        if (type==1) {
+                            holder.doneButton.setBackgroundResource(R.drawable.completemissionpink);
+                            holder.timeTopTv.setTextColor(Color.parseColor("#E2978D"));
+                            holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
+                            holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
+                            // set styling for right now
+                            // holder.timeTopTv.setTextColor();
+                        } else if (type==2) {
+                            holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
+                            holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
+                            holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
+                            holder.cardBack.setBackgroundResource(R.drawable.missioncardgreen);
+                        } else {
+                            holder.doneButton.setBackgroundResource(R.drawable.completemissionblue);
+                            holder.timeTopTv.setTextColor(Color.parseColor("#6B8B9D"));
+                            holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
+                            holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
+                            break;
+                        }
+                        break;
+                    case 1:
+                        header += "COMPLETED";
+                        holder.doneButton.setText("");
+                        break;
+                    case 2:
+                        header += "MISSED";
+                        holder.doneButton.setText("");
+                        holder.doneButton.setBackgroundResource(R.drawable.incompletemissiongrey);
+                        break;
+                }
+                holder.timeTopTv.setText(header);
+
+                // card button
+                holder.doneButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(main)
+                                .setTitle("Mark complete")
+                                .setMessage("Did you complete the mission?")
+                                .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
+                                        int newPoints = mPoints + member.getPoints();
+                                        fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);
+                                    }
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                    }
+                });
+
             }
 
             @Override
@@ -109,74 +181,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             }
         });
 
-        // card header
-        String header = "";
-        switch (m.getType()){
-            case 3:
-                header = "WEEK  |  ";
-                break;
-            case 1:
-                header = "DAY  |  ";
-                break;
-            case 2:
-                header = "NOW  |  ";
-                break;
-        }
-        switch (m.getStatus()){
-            case 0:
-                header += m.getStringTimeLeft((long)m.getTimeCreated());
-                holder.pointsCard.setCardBackgroundColor(Color.parseColor("#FAC16B"));
-                holder.doneButton.setText("MARK\nDONE");
-                if (m.getType()==1) {
-                    holder.doneButton.setBackgroundResource(R.drawable.completemissionpink);
-                    holder.timeTopTv.setTextColor(Color.parseColor("#E2978D"));
-                    holder.titleTv.setTextColor(Color.parseColor("#E2978D"));
-                    holder.cardBack.setBackgroundResource(R.drawable.missioncardpink);
-                    // set styling for right now
-                    // holder.timeTopTv.setTextColor();
-                } else if (m.getType()==2) {
-                    holder.doneButton.setBackgroundResource(R.drawable.completemissiongreen);
-                    holder.timeTopTv.setTextColor(Color.parseColor("#6B9D97"));
-                    holder.titleTv.setTextColor(Color.parseColor("#6B9D97"));
-                    holder.cardBack.setBackgroundResource(R.drawable.missioncardgreen);
-                } else {
-                     holder.doneButton.setBackgroundResource(R.drawable.completemissionblue);
-                     holder.timeTopTv.setTextColor(Color.parseColor("#6B8B9D"));
-                     holder.titleTv.setTextColor(Color.parseColor("#6B8B9D"));
-                     holder.cardBack.setBackgroundResource(R.drawable.missioncardblue);
-                     break;
-                 }
-                break;
-            case 1:
-                header += "COMPLETED";
-                holder.doneButton.setText("");
-                break;
-            case 2:
-                header += "MISSED";
-                holder.doneButton.setText("");
-                holder.doneButton.setBackgroundResource(R.drawable.incompletemissiongrey);
-                break;
-        }
-        holder.timeTopTv.setText(header);
-
-        // card button
-        holder.doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(main)
-                        .setTitle("Mark complete")
-                        .setMessage("Did you complete the mission?")
-                        .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                fireRef.child("families").child(famId).child("missions").child(m.getId()).child("status").setValue(1);
-                                int newPoints = mPoints + member.getPoints();
-                                fireRef.child("members").child(user.getUid()).child("points").setValue(newPoints);
-                            }
-                        })
-                        .setNegativeButton("Cancel", null)
-                        .show();
-            }
-        });
 
     }
 
